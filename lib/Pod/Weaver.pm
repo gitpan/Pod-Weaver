@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 # ABSTRACT: do horrible things to POD, producing better docs
 use Moose::Autobox;
@@ -197,7 +197,7 @@ Pod::Weaver - do horrible things to POD, producing better docs
 
 =head1 VERSION
 
-version 1.000
+version 1.001
 
 =head1 WARNING
 

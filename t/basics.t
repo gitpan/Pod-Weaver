@@ -2,13 +2,13 @@
 use strict;
 use warnings;
 use Test::More 'no_plan';
-use Test::LongString;
+use Test::Differences;
 use Pod::Weaver;
 
 my $pod = <<'END_DOC';
 use strict;
 package Test::Example::Pod;
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 
 # ABSTRACT: this is just a test
@@ -39,7 +39,7 @@ END_DOC
 my $want = <<'END_DOC';
 use strict;
 package Test::Example::Pod;
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 
 # ABSTRACT: this is just a test
@@ -84,5 +84,5 @@ END_DOC
 
 my $woven = Pod::Weaver->munge_pod_string($pod);
 
-is_string($woven, $want, 'we rewrote as expected');
+eq_or_diff($woven, $want, 'we rewrote as expected');
 

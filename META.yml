@@ -9,4 +9,5 @@ requires:
   List::MoreUtils: 0
   Moose::Autobox: 0
   Pod::Eventual: 0.003
-version: 1.000
+  Test::Differences: 0
+version: 1.001
