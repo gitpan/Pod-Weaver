@@ -8,7 +8,7 @@ use Pod::Weaver;
 my $pod = <<'END_DOC';
 use strict;
 package Test::Example::Pod;
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 
 # ABSTRACT: this is just a test
@@ -39,7 +39,7 @@ END_DOC
 my $want = <<'END_DOC';
 use strict;
 package Test::Example::Pod;
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 
 # ABSTRACT: this is just a test

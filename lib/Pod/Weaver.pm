@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 # ABSTRACT: do horrible things to POD, producing better docs
 use Moose::Autobox;
@@ -13,32 +13,32 @@ use List::MoreUtils qw(any);
   our @ISA = 'Pod::Eventual::Simple';
 
   sub handle_nonpod {}
-
-  sub write_string {
-    my ($self, $events) = @_;
-    my $str = "\n=pod\n\n";
-
-    EVENT: for my $event (@$events) {
-      if ($event->{type} eq 'verbatim') {
-        $event->{content} =~ s/^/  /mg;
-        $event->{type} = 'text';
-      }
-
-      if ($event->{type} eq 'text') {
-        $str .= "$event->{content}\n";
-        next EVENT;
-      }
-
-      $str .= "=$event->{command} $event->{content}\n";
-    }
-
-    return $str;
-  }
 }
 
 sub _h1 {
   my $name = shift;
   any { $_->{type} eq 'command' and $_->{content} =~ /^\Q$name$/m } @_;
+}
+
+sub _events_to_string {
+  my ($self, $events) = @_;
+  my $str = "\n=pod\n\n";
+
+  EVENT: for my $event (@$events) {
+    if ($event->{type} eq 'verbatim') {
+      $event->{content} =~ s/^/  /mg;
+      $event->{type} = 'text';
+    }
+
+    if ($event->{type} eq 'text') {
+      $str .= "$event->{content}\n";
+      next EVENT;
+    }
+
+    $str .= "=$event->{command} $event->{content}\n";
+  }
+
+  return $str;
 }
 
 
@@ -127,7 +127,7 @@ sub munge_pod_string {
   @pod = grep { $_->{type} ne 'command' or $_->{command} ne 'cut' } @pod;
   push @pod, { type => 'command', command => 'cut', content => "\n" };
 
-  my $newpod = $pe->write_string(\@pod);
+  my $newpod = $self->_events_to_string(\@pod);
 
   my $end = do {
     my $end_elem = $doc->find('PPI::Statement::Data')
@@ -197,7 +197,7 @@ Pod::Weaver - do horrible things to POD, producing better docs
 
 =head1 VERSION
 
-version 1.001
+version 1.002
 
 =head1 WARNING
 
