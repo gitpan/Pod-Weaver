@@ -1,5 +1,5 @@
 package Pod::Weaver::Weaver::Version;
-our $VERSION = '2.000';
+our $VERSION = '2.001';
 
 use Moose;
 with 'Pod::Weaver::Role::Weaver';
@@ -11,7 +11,7 @@ sub weave {
   my ($self, $arg) = @_;
   return unless $arg->{version};
 
-  $self->weaver->output_pod->push(
+  $self->weaver->output_pod->children->push(
     Pod::Elemental::Element::Command->new({
       type     => 'command',
       command  => 'head1',
@@ -31,13 +31,16 @@ no Moose;
 1;
 
 __END__
+
+=pod
+
 =head1 NAME
 
 Pod::Weaver::Weaver::Version - add a VERSION pod section to your Perl module
 
 =head1 VERSION
 
-version 2.000
+version 2.001
 
 =head1 AUTHOR
 
@@ -45,8 +48,11 @@ version 2.000
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2008 by Ricardo SIGNES.
+This software is copyright (c) 2009 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
+
+=cut 
+
 

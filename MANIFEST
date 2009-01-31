@@ -5,9 +5,6 @@ META.yml
 Makefile.PL
 README
 lib/Pod/Weaver.pm
-lib/Pod/Weaver/Parser/Nesting.pm
-lib/Pod/Weaver/Parser/Simple.pm
-lib/Pod/Weaver/PodChunk.pm
 lib/Pod/Weaver/Role/Plugin.pm
 lib/Pod/Weaver/Role/Weaver.pm
 lib/Pod/Weaver/Weaver/Abstract.pm

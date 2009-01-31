@@ -14,5 +14,6 @@ requires:
   Pod::Eventual::Simple: 0.004
   Software::License: 0
   String::Flogger: 1
+  String::RewritePrefix: 0
   Test::Differences: 0
-version: 2.000
+version: 2.001

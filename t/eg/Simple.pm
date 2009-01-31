@@ -1,6 +1,6 @@
 use strict;
 package Test::Example::Pod;
-our $VERSION = '2.000';
+our $VERSION = '2.001';
 
 # ABSTRACT: this is just a test
 

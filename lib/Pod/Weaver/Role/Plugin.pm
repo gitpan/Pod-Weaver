@@ -1,8 +1,8 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '2.000';
-
+our $VERSION = '2.001';
 
 use Moose::Role;
+# ABSTRACT: a Pod::Weaver plugin
 
 has plugin_name => (
   is  => 'ro',
@@ -23,13 +23,16 @@ no Moose::Role;
 1;
 
 __END__
+
+=pod
+
 =head1 NAME
 
-Pod::Weaver::Role::Plugin
+Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 2.000
+version 2.001
 
 =head1 AUTHOR
 
@@ -37,8 +40,11 @@ version 2.000
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2008 by Ricardo SIGNES.
+This software is copyright (c) 2009 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
+
+=cut 
+
 

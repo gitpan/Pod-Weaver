@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '2.000';
+our $VERSION = '2.001';
 
 use Moose;
 # ABSTRACT: do horrible things to POD, producing better docs
@@ -8,8 +8,8 @@ use List::MoreUtils qw(any);
 use Moose::Autobox;
 use PPI;
 use Pod::Elemental;
+use Pod::Elemental::Document;
 use Pod::Eventual::Simple;
-use Pod::Weaver::Parser::Nesting;
 use Pod::Weaver::Role::Plugin;
 use String::Flogger;
 use String::RewritePrefix;
@@ -35,16 +35,16 @@ sub _h1 {
 
 has input_pod => (
   is   => 'rw',
-  isa  => 'ArrayRef[Pod::Elemental::Element]',
+  isa  => 'Pod::Elemental::Document',
 );
 
 has output_pod => (
   is   => 'ro',
-  isa  => 'ArrayRef[Pod::Elemental::Element]',
+  isa  => 'Pod::Elemental::Document',
   lazy => 1,
   required => 1,
   init_arg => undef,
-  default  => sub { [] },
+  default  => sub { Pod::Elemental::Document->new },
 );
 
 has ppi_doc => (
@@ -175,9 +175,11 @@ sub munge_pod_string {
     $plugin->weave($arg);
   }
 
-  $self->output_pod->push($self->input_pod->flatten);
+  $self->output_pod->children->push($self->input_pod->children->flatten);
 
-  my $newpod = $self->output_pod->map(sub { $_->as_string })->join("\n");
+  my $newpod = $self->output_pod->children->map(
+    sub { $_->as_string }
+  )->join("\n");
 
   my $end = do {
     my $end_elem = $self->ppi_doc->find('PPI::Statement::Data')
@@ -199,13 +201,25 @@ no Moose;
 1;
 
 __END__
+
+=pod
+
 =head1 NAME
 
 Pod::Weaver - do horrible things to POD, producing better docs
 
 =head1 VERSION
 
-version 2.000
+version 2.001
+
+=head1 WARNING
+
+This code is really, really sketchy.  It's crude and brutal and will probably
+break whatever it is you were trying to do.
+
+Eventually, this code will be really awesome.  I hope.  It will probably
+provide an interface to something more cool and sophisticated.  Until then,
+don't expect it to do anything but bring sorrow to you and your people.
 
 =head1 DESCRIPTION
 
@@ -216,7 +230,7 @@ reconstructs it as boring old real POD.
 
 =head2 munge_pod_string
 
-  my $new_content = Pod::Weaver->munge_pod_string($string, \%arg);
+    my $new_content = Pod::Weaver->munge_pod_string($string, \%arg);
 
 Right now, this is the only method.  You feed it a string containing a
 POD-riddled document and it returns a woven form.  Right now, you can't really
@@ -224,10 +238,10 @@ do much configuration of the loom.
 
 Valid arguments are:
 
-  filename - the name of the document file being rewritten (for errors)
-  version  - the version of the document
-  authors  - an arrayref of document authors (provided as strings)
-  license  - the license of the document (a Software::License object)
+    filename - the name of the document file being rewritten (for errors)
+    version  - the version of the document
+    authors  - an arrayref of document authors (provided as strings)
+    license  - the license of the document (a Software::License object)
 
 =head1 AUTHOR
 
@@ -235,17 +249,11 @@ Valid arguments are:
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2008 by Ricardo SIGNES.
+This software is copyright (c) 2009 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
 
-=head1 WARNING
+=cut 
 
-This code is really, really sketchy.  It's crude and brutal and will probably
-break whatever it is you were trying to do.
-
-Eventually, this code will be really awesome.  I hope.  It will probably
-provide an interface to something more cool and sophisticated.  Until then,
-don't expect it to do anything but bring sorrow to you and your people.
 

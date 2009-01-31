@@ -1,5 +1,5 @@
 package Pod::Weaver::Weaver::Maybe;
-our $VERSION = '2.000';
+our $VERSION = '2.001';
 
 use Moose;
 with 'Pod::Weaver::Role::Weaver';
@@ -19,7 +19,8 @@ sub weave {
   my ($self) = @_;
 
   for my $section ($self->sections) {
-    my $input = $self->weaver->input_pod;
+    # XXX Is this right? -- rjbs, 2008-11-21
+    my $input = $self->weaver->input_pod->children;
     my @to_add;
 
     for my $i (reverse (0 .. $#$input)) {
@@ -44,7 +45,7 @@ sub weave {
       unshift @to_add, $elem;
     }
 
-    $self->weaver->output_pod->push(@to_add);
+    $self->weaver->output_pod->children->push(@to_add);
   }
 }
 
@@ -53,13 +54,16 @@ no Moose;
 1;
 
 __END__
+
+=pod
+
 =head1 NAME
 
 Pod::Weaver::Weaver::Maybe - expect a top-level section to appear, maybe
 
 =head1 VERSION
 
-version 2.000
+version 2.001
 
 =head1 AUTHOR
 
@@ -67,8 +71,11 @@ version 2.000
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2008 by Ricardo SIGNES.
+This software is copyright (c) 2009 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
+
+=cut 
+
 
