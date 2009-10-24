@@ -1,18 +1,18 @@
 package Pod::Weaver;
-our $VERSION = '2.001';
+our $VERSION = '3.092970';
+
 
 use Moose;
-# ABSTRACT: do horrible things to POD, producing better docs
+# ABSTRACT: weave together a Pod document from an outline
 
-use List::MoreUtils qw(any);
-use Moose::Autobox;
-use PPI;
+use namespace::autoclean;
+
+
+use Moose::Autobox 0.10;
 use Pod::Elemental;
 use Pod::Elemental::Document;
-use Pod::Eventual::Simple;
 use Pod::Weaver::Role::Plugin;
 use String::Flogger;
-use String::RewritePrefix;
 
 
 {
@@ -28,44 +28,6 @@ has logger => (
   handles => [ qw(log) ]
 );
 
-sub _h1 {
-  my $name = shift;
-  any { $_->{type} eq 'command' and $_->{content} =~ /^\Q$name$/m } @_;
-}
-
-has input_pod => (
-  is   => 'rw',
-  isa  => 'Pod::Elemental::Document',
-);
-
-has output_pod => (
-  is   => 'ro',
-  isa  => 'Pod::Elemental::Document',
-  lazy => 1,
-  required => 1,
-  init_arg => undef,
-  default  => sub { Pod::Elemental::Document->new },
-);
-
-has ppi_doc => (
-  is   => 'rw',
-  isa  => 'PPI::Document',
-);
-
-has eventual => (
-  is   => 'ro',
-  isa  => 'Str|Object',
-  required => 1,
-  default  => 'Pod::Eventual::Simple',
-);
-
-has elemental => (
-  is   => 'ro',
-  isa  => 'Str|Object',
-  required => 1,
-  default  => 'Pod::Elemental',
-);
-
 
 has plugins => (
   is  => 'ro',
@@ -76,54 +38,6 @@ has plugins => (
   default  => sub { [] },
 );
 
-has _config => (
-  is  => 'ro',
-  isa => 'ArrayRef',
-  default => sub {
-    my @plugins = String::RewritePrefix->rewrite(
-      {
-        '=' => '',
-        ''  => 'Pod::Weaver::Plugin::',
-        '~' => 'Pod::Weaver::Weaver::',
-      },
-      qw(~Abstract ~Version ~Authors ~License),
-    );
-    my $return = [ map {; [ $_ => { '=name' => $_ } ] } @plugins ];
-    splice @$return, 2, 0, [
-      'Pod::Weaver::Weaver::Maybe' => {
-        '=name' => 'Maybe',
-        section => [ qw(SYNOPSIS DESCRIPTION) ],
-      },
-    ],
-    [
-      'Pod::Weaver::Weaver::Thingers' => {
-        '=name' => 'Attributes',
-        command => 'attr',
-        header  => 'ATTRIBUTES',
-      },
-    ],
-    [
-      'Pod::Weaver::Weaver::Thingers' => {
-        '=name' => 'Methods',
-        command => 'method',
-        header  => 'METHODS',
-      },
-    ];
-    return $return;
-  },
-);
-
-sub BUILD {
-  my ($self) = @_;
-
-  for my $entry ($self->_config->flatten) {
-    my ($plugin_class, $config) = @$entry;
-    eval "require $plugin_class; 1" or die;
-    $self->plugins->push(
-      $plugin_class->new( $config->merge({ weaver  => $self }) )
-    );
-  }
-}
 
 sub plugins_with {
   my ($self, $role) = @_;
@@ -134,66 +48,131 @@ sub plugins_with {
   return $plugins;
 }
 
-sub munge_pod_string {
-  my ($self, $content, $arg) = @_;
 
-  # This won't last. It's just here transitionally. -- rjbs, 2008-10-22
-  $self = $self->new unless ref $self;
+sub weave_document {
+  my ($self, $input) = @_;
 
-  $arg = { filename => 'document' }->merge($arg || {});
+  my $document = Pod::Elemental::Document->new;
 
-  $self->ppi_doc( PPI::Document->new(\$content) );
+  $self->plugins_with(-Preparer)->each_value(sub {
+    $_->prepare_input($input);
+  });
 
-  unless ($self->ppi_doc) {
-    $self->log("can't produce PPI::Document from $arg->{filename}; giving up");
-    return $content;
+  $self->plugins_with(-Section)->each_value(sub {
+    $_->weave_section($document, $input);
+  });
+
+  $self->plugins_with(-Finalizer)->each_value(sub {
+    $_->finalize_document($document, $input);
+  });
+
+  return $document;
+}
+
+
+sub new_with_default_config {
+  my ($class) = @_;
+  my $weaver = $class->new;
+
+  {
+    require Pod::Weaver::Section::Name;
+    my $name = Pod::Weaver::Section::Name->new({
+      weaver      => $weaver,
+      plugin_name => 'Name',
+    });
+
+    $weaver->plugins->push($name);
   }
 
-  my @pod_tokens = map {"$_"} @{ $self->ppi_doc->find('PPI::Token::Pod') || [] };
-  $self->ppi_doc->prune('PPI::Token::Pod');
+  {
+    require Pod::Weaver::Section::Version;
+    my $version = Pod::Weaver::Section::Version->new({
+      weaver      => $weaver,
+      plugin_name => 'Version',
+    });
 
-  my $podless_doc_str = $self->ppi_doc->serialize;
-
-  if (
-    $self->eventual->read_string($podless_doc_str)->grep(sub {
-      $_->{type} ne 'nonpod'
-    })->length
-  ) {
-    $self->log(
-      sprintf "can't invoke %s on %s: there is POD inside string literals",
-        'Pod::Weaver', $arg->{filename}
-    );
-    return;
+    $weaver->plugins->push($version);
   }
 
-  my $elements = $self->elemental->read_string(join "\n", @pod_tokens);
+  {
+    require Pod::Weaver::Section::Region;
+    my $prelude = Pod::Weaver::Section::Region->new({
+      weaver      => $weaver,
+      plugin_name => 'prelude',
+    });
 
-  $self->input_pod( $elements );
-
-  for my $plugin ($self->plugins_with(-Weaver)->flatten) {
-    $self->log([ 'invoking plugin %s', $plugin->plugin_name ]);
-    $plugin->weave($arg);
+    $weaver->plugins->push($prelude);
   }
 
-  $self->output_pod->children->push($self->input_pod->children->flatten);
+  {
+    require Pod::Weaver::Section::Generic;
+    for my $section (qw(SYNOPSIS DESCRIPTION OVERVIEW)) {
+      my $generic = Pod::Weaver::Section::Generic->new({
+        weaver      => $weaver,
+        plugin_name => $section,
+      });
 
-  my $newpod = $self->output_pod->children->map(
-    sub { $_->as_string }
-  )->join("\n");
+      $weaver->plugins->push($generic);
+    }
+  }
 
-  my $end = do {
-    my $end_elem = $self->ppi_doc->find('PPI::Statement::Data')
-                || $self->ppi_doc->find('PPI::Statement::End');
-    join q{}, @{ $end_elem || [] };
-  };
+  {
+    require Pod::Weaver::Section::Collect;
+    for my $pair (
+      [ qw(attr   ATTRIBUTES) ],
+      [ qw(method METHODS   ) ],
+    ) {
+      my $collect = Pod::Weaver::Section::Collect->new({
+        weaver      => $weaver,
+        plugin_name => $pair->[1],
+        command     => $pair->[0],
+      });
 
-  $self->ppi_doc->prune('PPI::Statement::End');
-  $self->ppi_doc->prune('PPI::Statement::Data');
+      $weaver->plugins->push($collect);
+    }
+  }
 
-  $content = $end ? "$podless_doc_str\n\n$newpod\n\n$end"
-                  : "$podless_doc_str\n__END__\n$newpod\n";
+  {
+    require Pod::Weaver::Section::Leftovers;
+    my $leftovers = Pod::Weaver::Section::Leftovers->new({
+      weaver      => $weaver,
+      plugin_name => 'Leftovers',
+    });
 
-  return $content;
+    $weaver->plugins->push($leftovers);
+  }
+
+  {
+    require Pod::Weaver::Section::Region;
+    my $postlude = Pod::Weaver::Section::Region->new({
+      weaver      => $weaver,
+      plugin_name => 'postlude',
+    });
+
+    $weaver->plugins->push($postlude);
+  }
+
+  {
+    require Pod::Weaver::Section::Authors;
+    my $authors = Pod::Weaver::Section::Authors->new({
+      weaver      => $weaver,
+      plugin_name => 'Authors',
+    });
+
+    $weaver->plugins->push($authors);
+  }
+
+  {
+    require Pod::Weaver::Section::Legal;
+    my $legal = Pod::Weaver::Section::Legal->new({
+      weaver      => $weaver,
+      plugin_name => 'Legal',
+    });
+
+    $weaver->plugins->push($legal);
+  }
+
+  return $weaver;
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -201,59 +180,129 @@ no Moose;
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
 
-Pod::Weaver - do horrible things to POD, producing better docs
+Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 2.001
+version 3.092970
 
-=head1 WARNING
+=head1 SYNOPSIS
 
-This code is really, really sketchy.  It's crude and brutal and will probably
-break whatever it is you were trying to do.
-
-Eventually, this code will be really awesome.  I hope.  It will probably
-provide an interface to something more cool and sophisticated.  Until then,
-don't expect it to do anything but bring sorrow to you and your people.
+  my $weaver = Pod::Weaver->new_with_default_config;
+  my $document = $weaver->weave_document({
+    pod_document => $pod_elemental_document,
+    ppi_document => $ppi_document,
+    license  => $software_license,
+    version  => $version_string,
+    authors  => \@author_names,
+  })
 
 =head1 DESCRIPTION
 
-Pod::Weaver is a work in progress, which rips apart your kinda-POD and
-reconstructs it as boring old real POD.
+Pod::Weaver is a system for building Pod documents from templates.  It doesn't
+perform simple text substitution, but instead builds a
+Pod::Elemental::Document.  Its plugins sketch out a series of sections
+that will be produced based on an existing Pod document or other provided
+information.
+
+=cut
+
+=pod
+
+=head1 ATTRIBUTES
+
+=head2 logger
+
+This attribute stores the logger, which must provide a log method.  The
+weaver's log method delegates to the logger's log method.
+
+=cut
+
+=pod
+
+=head2 plugins
+
+This attribute is an arrayref of objects that can perform the
+L<Pod::Weaver::Role::Plugin> role.  In general, its contents are found through
+the C<L</plugins_with>> method.
+
+=cut
+
+=pod
 
 =head1 METHODS
 
-=head2 munge_pod_string
+=head2 plugins_with
 
-    my $new_content = Pod::Weaver->munge_pod_string($string, \%arg);
+  my $plugins_array_ref = $weaver->plugins_with('-Section');
 
-Right now, this is the only method.  You feed it a string containing a
-POD-riddled document and it returns a woven form.  Right now, you can't really
-do much configuration of the loom.
+This method will return an arrayref of plugins that perform the given role, in
+the order of their registration.  If the role name begins with a hyphen, the
+method will prepend C<Pod::Weaver::Role::>.
 
-Valid arguments are:
+=cut
 
-    filename - the name of the document file being rewritten (for errors)
-    version  - the version of the document
-    authors  - an arrayref of document authors (provided as strings)
-    license  - the license of the document (a Software::License object)
+=pod
+
+=head2 weave_document
+
+  my $document = $weaver->weave_document(\%input);
+
+This is the most important method in Pod::Weaver.  Given a set of input
+parameters, it will weave a new document.  Different section plugins will
+expect different input parameters to be present, but some common ones include:
+
+  pod_document - a Pod::Elemental::Document for the original Pod document
+  ppi_document - a PPI document for the source of the module being documented
+  license      - a Software::License object for the source module's license
+  version      - a version (string) to use in produced documentation
+
+The C<pod_document> should have gone through a L<Pod5
+transformer|Pod::Elemental::Transformer::Pod5>, and should probably have had
+its C<=head1> elements L<nested|Pod::Elemental::Transformer::Nester>.
+
+The method will return a new Pod::Elemental::Document.  The input documents may
+be destructively altered during the weaving process.  If they should be
+untouched, pass in copies.
+
+=cut
+
+=pod
+
+=head2 new_with_default_config
+
+This method returns a new Pod::Weaver with a stock configuration, equivalent to
+this:
+
+  [Name]
+  [Version]
+  [Region  / prelude]
+  [Generic / SYNOPSIS]
+  [Generic / DESCRIPTION]
+  [Generic / OVERVIEW]
+  [Collect / ATTRIBUTES]
+  command = attr
+  [Collect / METHODS]
+  command = method
+  [Leftovers]
+  [Region  / postlude]
+  [Authors]
+  [Legal]
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2009 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

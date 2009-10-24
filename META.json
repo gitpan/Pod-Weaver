@@ -1,0 +1,30 @@
+{
+   "resources" : {
+      "repository" : "http://github.com/rjbs/pod-weaver/tree"
+   },
+   "meta-spec" : {
+      "version" : 1.4,
+      "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
+   },
+   "generated_by" : "Dist::Zilla version 1.092850",
+   "version" : "3.092970",
+   "name" : "Pod-Weaver",
+   "author" : [
+      "Ricardo SIGNES <rjbs@cpan.org>"
+   ],
+   "license" : "perl",
+   "requires" : {
+      "PPI" : "0",
+      "Pod::Elemental" : "0.092941",
+      "namespace::autoclean" : "0",
+      "String::RewritePrefix" : "0",
+      "Moose::Autobox" : "0.10",
+      "Pod::Eventual::Simple" : "0.004",
+      "Test::Differences" : "0",
+      "Software::License" : "0",
+      "List::MoreUtils" : "0",
+      "String::Flogger" : "1",
+      "Moose" : "0"
+   },
+   "abstract" : "weave together a Pod document from an outline"
+}
