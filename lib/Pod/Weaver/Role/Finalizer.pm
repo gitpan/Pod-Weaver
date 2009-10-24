@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Finalizer;
-our $VERSION = '3.092970';
+our $VERSION = '3.092971';
 
 
 use Moose::Role;
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Finalizer - something that goes back and finishes up after ma
 
 =head1 VERSION
 
-version 3.092970
+version 3.092971
 
 =head1 IMPLEMENTING
 

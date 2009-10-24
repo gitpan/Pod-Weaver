@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Leftovers;
-our $VERSION = '3.092970';
+our $VERSION = '3.092971';
 
 
 use Moose;
@@ -67,7 +67,7 @@ Pod::Weaver::Section::Leftovers - a place to put everything that nothing else us
 
 =head1 VERSION
 
-version 3.092970
+version 3.092971
 
 =head1 OVERVIEW
 
