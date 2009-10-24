@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Name;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose;
@@ -56,7 +56,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 OVERVIEW
 
@@ -64,6 +64,7 @@ This section plugin will produce a hunk of Pod giving the name of the document
 as well as an abstract, like this:
 
   =head1 NAME
+
   Some::Document - a document for some
 
 It will determine the name and abstract by inspecting the C<ppi_document> which
@@ -74,7 +75,7 @@ comment in this form:
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

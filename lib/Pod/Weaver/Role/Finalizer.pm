@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Finalizer;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose::Role;
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Finalizer - something that goes back and finishes up after ma
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 IMPLEMENTING
 
@@ -33,7 +33,7 @@ provide a C<finalize_document> method which will be called as follows:
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

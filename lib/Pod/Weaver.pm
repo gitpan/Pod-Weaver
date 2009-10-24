@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose;
@@ -188,14 +188,16 @@ Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 SYNOPSIS
 
   my $weaver = Pod::Weaver->new_with_default_config;
+
   my $document = $weaver->weave_document({
     pod_document => $pod_elemental_document,
     ppi_document => $ppi_document,
+
     license  => $software_license,
     version  => $version_string,
     authors  => \@author_names,
@@ -209,10 +211,6 @@ Pod::Elemental::Document.  Its plugins sketch out a series of sections
 that will be produced based on an existing Pod document or other provided
 information.
 
-=cut
-
-=pod
-
 =head1 ATTRIBUTES
 
 =head2 logger
@@ -220,19 +218,11 @@ information.
 This attribute stores the logger, which must provide a log method.  The
 weaver's log method delegates to the logger's log method.
 
-=cut
-
-=pod
-
 =head2 plugins
 
 This attribute is an arrayref of objects that can perform the
 L<Pod::Weaver::Role::Plugin> role.  In general, its contents are found through
 the C<L</plugins_with>> method.
-
-=cut
-
-=pod
 
 =head1 METHODS
 
@@ -243,10 +233,6 @@ the C<L</plugins_with>> method.
 This method will return an arrayref of plugins that perform the given role, in
 the order of their registration.  If the role name begins with a hyphen, the
 method will prepend C<Pod::Weaver::Role::>.
-
-=cut
-
-=pod
 
 =head2 weave_document
 
@@ -269,10 +255,6 @@ The method will return a new Pod::Elemental::Document.  The input documents may
 be destructively altered during the weaving process.  If they should be
 untouched, pass in copies.
 
-=cut
-
-=pod
-
 =head2 new_with_default_config
 
 This method returns a new Pod::Weaver with a stock configuration, equivalent to
@@ -280,22 +262,29 @@ this:
 
   [Name]
   [Version]
+
   [Region  / prelude]
+
   [Generic / SYNOPSIS]
   [Generic / DESCRIPTION]
   [Generic / OVERVIEW]
+
   [Collect / ATTRIBUTES]
   command = attr
+
   [Collect / METHODS]
   command = method
+
   [Leftovers]
+
   [Region  / postlude]
+
   [Authors]
   [Legal]
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

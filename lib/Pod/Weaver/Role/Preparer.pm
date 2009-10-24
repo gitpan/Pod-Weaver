@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Preparer;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose::Role;
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Preparer - something that mucks about with the input before w
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 IMPLEMENTING
 
@@ -32,7 +32,7 @@ the input in place.
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

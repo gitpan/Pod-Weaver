@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Authors;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose;
@@ -46,7 +46,7 @@ Pod::Weaver::Section::Authors - a section listing authors
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 OVERVIEW
 
@@ -55,12 +55,13 @@ input parameter to be an arrayref of strings.  If no C<authors> parameter is
 given, it will do nothing.  Otherwise, it produces a hunk like this:
 
   =head1 AUTHORS
+
     Author One <a1@example.com>
     Author Two <a2@example.com>
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

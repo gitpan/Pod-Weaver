@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Version;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose;
@@ -39,7 +39,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 OVERVIEW
 
@@ -47,13 +47,14 @@ This section plugin will produce a hunk of Pod meant to indicate the version of
 the document being viewed, like this:
 
   =head1 VERSION
+
   version 1.234
 
 It will do nothing if there is no C<version> entry in the input.
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

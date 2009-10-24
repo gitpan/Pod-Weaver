@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Legal;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose;
@@ -40,7 +40,7 @@ Pod::Weaver::Section::Legal - a section for the copyright and license
 
 =head1 VERSION
 
-version 3.092971
+version 3.092972
 
 =head1 OVERVIEW
 
@@ -48,7 +48,9 @@ This section plugin will produce a hunk of Pod giving the copyright and license
 information for the document, like this:
 
   =head1 COPYRIGHT AND LICENSE
+
   This document is copyright (C) 1991, Ricardo Signes.
+
   This document is available under the blah blah blah.
 
 This plugin will do nothing if no C<license> input parameter is available.  The
@@ -56,7 +58,7 @@ C<license> is expected to be a L<Software::License> object.
 
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

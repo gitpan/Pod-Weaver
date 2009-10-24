@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '3.092971';
+our $VERSION = '3.092972';
 
 
 use Moose::Role;
@@ -34,11 +34,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.092971
-
-=head1 IMPLEMENTING
-
-This is the most basic role that all plugins must perform.
+version 3.092972
 
 =head1 ATTRIBUTES
 
@@ -47,18 +43,18 @@ This is the most basic role that all plugins must perform.
 This name must be unique among all other plugins loaded into a weaver.  In
 general, this will be set up by the configuration reader.
 
-=cut
-
-=pod
-
 =head2 weaver
 
 This is the Pod::Weaver object into which the plugin was loaded.  In general,
 this will be set up when the weaver is instantiated from config.
 
+=head1 IMPLEMENTING
+
+This is the most basic role that all plugins must perform.
+
 =head1 AUTHOR
 
-Ricardo SIGNES <rjbs@cpan.org>
+  Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
