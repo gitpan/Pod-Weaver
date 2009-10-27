@@ -1,10 +1,10 @@
 package Pod::Weaver::Section::Collect;
-our $VERSION = '3.092990';
+our $VERSION = '3.093000';
 
 
 use Moose;
 with 'Pod::Weaver::Role::Section';
-with 'Pod::Weaver::Role::Preparer';
+with 'Pod::Weaver::Role::Transformer';
 # ABSTRACT: a section that gathers up specific commands
 
 use Moose::Autobox;
@@ -39,10 +39,9 @@ use Pod::Elemental::Transformer::Nester;
 
 has __used_container => (is => 'rw');
 
-sub prepare_input {
-  my ($self, $input) = @_;
+sub transform_document {
+  my ($self, $document) = @_;
 
-  my $document = $input->{pod_document};
   my $selector = s_command($self->command);
 
   return unless $document->children->grep($selector)->length;
@@ -108,7 +107,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.092990
+version 3.093000
 
 =head1 OVERVIEW
 

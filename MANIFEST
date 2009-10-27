@@ -9,10 +9,15 @@ lib/Pod/Weaver.pm
 lib/Pod/Weaver/Config.pm
 lib/Pod/Weaver/Config/Assembler.pm
 lib/Pod/Weaver/Config/Finder.pm
+lib/Pod/Weaver/Plugin/EnsurePod5.pm
+lib/Pod/Weaver/Plugin/H1Nester.pm
+lib/Pod/Weaver/PluginBundle/CorePrep.pm
+lib/Pod/Weaver/Role/Dialect.pm
 lib/Pod/Weaver/Role/Finalizer.pm
 lib/Pod/Weaver/Role/Plugin.pm
 lib/Pod/Weaver/Role/Preparer.pm
 lib/Pod/Weaver/Role/Section.pm
+lib/Pod/Weaver/Role/Transformer.pm
 lib/Pod/Weaver/Section/Authors.pm
 lib/Pod/Weaver/Section/Collect.pm
 lib/Pod/Weaver/Section/Generic.pm

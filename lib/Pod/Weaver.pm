@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '3.092990';
+our $VERSION = '3.093000';
 
 
 use Moose;
@@ -59,6 +59,14 @@ sub weave_document {
     $_->prepare_input($input);
   });
 
+  $self->plugins_with(-Dialect)->each_value(sub {
+    $_->translate_dialect($input->{pod_document});
+  });
+
+  $self->plugins_with(-Transformer)->each_value(sub {
+    $_->transform_document($input->{pod_document});
+  });
+
   $self->plugins_with(-Section)->each_value(sub {
     $_->weave_section($document, $input);
   });
@@ -74,6 +82,20 @@ sub weave_document {
 sub new_with_default_config {
   my ($class) = @_;
   my $weaver = $class->new;
+
+  {
+    require Pod::Weaver::PluginBundle::CorePrep;
+    my @plugins = Pod::Weaver::PluginBundle::CorePrep->mvp_bundle_config({});
+
+    for my $plugin (@plugins) {
+      eval "require $plugin->[1]; 1" or die;
+      $weaver->plugins->push($plugin->[1]->new({
+        %{ $plugin->[2] },
+        plugin_name => $plugin->[0],
+        weaver      => $weaver,
+      }));
+    }
+  }
 
   {
     require Pod::Weaver::Section::Name;
@@ -239,7 +261,7 @@ Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 3.092990
+version 3.093000
 
 =head1 SYNOPSIS
 
@@ -310,6 +332,8 @@ untouched, pass in copies.
 
 This method returns a new Pod::Weaver with a stock configuration, equivalent to
 this:
+
+  [@CorePrep]
 
   [Name]
   [Version]

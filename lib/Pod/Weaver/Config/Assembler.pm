@@ -1,5 +1,5 @@
 package Pod::Weaver::Config::Assembler;
-our $VERSION = '3.092990';
+our $VERSION = '3.093000';
 
 
 use Moose;
@@ -15,6 +15,7 @@ sub expand_package {
   return scalar String::RewritePrefix->rewrite(
     {
       ''  => 'Pod::Weaver::Section::',
+      '-' => 'Pod::Weaver::Plugin::',
       '@' => 'Pod::Weaver::PluginBundle::',
       '=' => '',
     },
@@ -34,7 +35,7 @@ Pod::Weaver::Config::Assembler - Pod::Weaver-specific subclass of Config::MVP::A
 
 =head1 VERSION
 
-version 3.092990
+version 3.093000
 
 =head1 AUTHOR
 

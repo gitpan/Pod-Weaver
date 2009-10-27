@@ -1,13 +1,13 @@
-package Pod::Weaver::Role::Preparer;
+package Pod::Weaver::Role::Transformer;
 our $VERSION = '3.093000';
 
 
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
-# ABSTRACT: something that mucks about with the input before weaving begins
+# ABSTRACT: something that restructures a Pod5 document
 
 
-requires 'prepare_input';
+requires 'transform_document';
 
 no Moose::Role;
 1;
@@ -17,7 +17,7 @@ __END__
 
 =head1 NAME
 
-Pod::Weaver::Role::Preparer - something that mucks about with the input before weaving begins
+Pod::Weaver::Role::Transformer - something that restructures a Pod5 document
 
 =head1 VERSION
 
@@ -26,9 +26,9 @@ version 3.093000
 =head1 IMPLEMENTING
 
 The Preparer role indicates that a plugin will be used to pre-process the input
-hashref before weaving begins.  The plugin must provide a C<prepare_input>
-method which will be called with the input hashref.  It is expected to modify
-the input in place.
+hashref's Pod document before weaving begins.  The plugin must provide a
+C<transform_document> method which will be called with the input Pod document.
+It is expected to modify the input in place.
 
 =head1 AUTHOR
 
