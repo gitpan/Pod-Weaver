@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Collect;
-our $VERSION = '3.093000';
+our $VERSION = '3.093001';
 
 
 use Moose;
@@ -107,7 +107,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.093000
+version 3.093001
 
 =head1 OVERVIEW
 

@@ -12,6 +12,7 @@ lib/Pod/Weaver/Config/Finder.pm
 lib/Pod/Weaver/Plugin/EnsurePod5.pm
 lib/Pod/Weaver/Plugin/H1Nester.pm
 lib/Pod/Weaver/PluginBundle/CorePrep.pm
+lib/Pod/Weaver/PluginBundle/Default.pm
 lib/Pod/Weaver/Role/Dialect.pm
 lib/Pod/Weaver/Role/Finalizer.pm
 lib/Pod/Weaver/Role/Plugin.pm

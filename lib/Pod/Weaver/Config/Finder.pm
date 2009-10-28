@@ -1,5 +1,5 @@
 package Pod::Weaver::Config::Finder;
-our $VERSION = '3.093000';
+our $VERSION = '3.093001';
 
 
 use Moose;
@@ -24,7 +24,7 @@ Pod::Weaver::Config::Finder - the reader for weaver.ini files
 
 =head1 VERSION
 
-version 3.093000
+version 3.093001
 
 =head1 AUTHOR
 

@@ -7,7 +7,7 @@
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
    "generated_by" : "Dist::Zilla version 1.092990",
-   "version" : "3.093000",
+   "version" : "3.093001",
    "name" : "Pod-Weaver",
    "author" : [
       "Ricardo SIGNES <rjbs@cpan.org>"
@@ -20,7 +20,7 @@
       "String::RewritePrefix" : "0",
       "Moose::Autobox" : "0.10",
       "Pod::Eventual::Simple" : "0.004",
-      "Config::MVP" : "0.092990",
+      "Config::MVP" : "3.093001",
       "Test::Differences" : "0",
       "Software::License" : "0",
       "List::MoreUtils" : "0",
