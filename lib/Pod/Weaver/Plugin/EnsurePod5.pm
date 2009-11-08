@@ -1,5 +1,5 @@
 package Pod::Weaver::Plugin::EnsurePod5;
-our $VERSION = '3.093001';
+our $VERSION = '3.093120';
 
 
 use Moose;
@@ -54,7 +54,7 @@ Pod::Weaver::Plugin::EnsurePod5 - ensure that the Pod5 translator has been run o
 
 =head1 VERSION
 
-version 3.093001
+version 3.093120
 
 =head1 OVERVIEW
 

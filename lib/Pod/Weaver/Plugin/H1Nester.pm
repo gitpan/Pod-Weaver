@@ -1,5 +1,5 @@
 package Pod::Weaver::Plugin::H1Nester;
-our $VERSION = '3.093001';
+our $VERSION = '3.093120';
 
 
 use Moose;
@@ -41,7 +41,7 @@ Pod::Weaver::Plugin::H1Nester - structure the input pod document into head1-grou
 
 =head1 VERSION
 
-version 3.093001
+version 3.093120
 
 =head1 OVERVIEW
 
