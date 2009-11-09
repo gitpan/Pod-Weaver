@@ -9,11 +9,12 @@ WriteMakefile(
   NAME      => 'Pod::Weaver',
   AUTHOR    => "Ricardo\ SIGNES\ \<rjbs\@cpan\.org\>",
   ABSTRACT  => "weave\ together\ a\ Pod\ document\ from\ an\ outline",
-  VERSION   => '3.093120',
+  VERSION   => '3.093130',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
     "PPI" => '0',
+    "Config::MVP::Reader::INI" => '0',
     "Pod::Elemental" => '0.092941',
     "namespace::autoclean" => '0',
     "String::RewritePrefix" => '0',

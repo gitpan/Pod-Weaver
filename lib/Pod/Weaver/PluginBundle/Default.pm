@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::Default;
-our $VERSION = '3.093120';
+our $VERSION = '3.093130';
 
 
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
@@ -46,7 +46,7 @@ Pod::Weaver::PluginBundle::Default - a bundle for the most commonly-needed prep 
 
 =head1 VERSION
 
-version 3.093120
+version 3.093130
 
 =head1 OVERVIEW
 
