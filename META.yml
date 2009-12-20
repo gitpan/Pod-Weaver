@@ -1,0 +1,27 @@
+---
+abstract: 'weave together a Pod document from an outline'
+author:
+  - 'Ricardo SIGNES <rjbs@cpan.org>'
+generated_by: 'Dist::Zilla version 1.093400'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Pod-Weaver
+requires:
+  Config::MVP: 0.093120
+  Config::MVP::Reader::INI: 0
+  List::MoreUtils: 0
+  Moose: 0
+  Moose::Autobox: 0.10
+  PPI: 0
+  Pod::Elemental: 0.092941
+  Pod::Eventual::Simple: 0.004
+  Software::License: 0
+  String::Flogger: 1
+  String::RewritePrefix: 0
+  Test::Differences: 0
+  namespace::autoclean: 0
+resources:
+  repository: http://github.com/rjbs/pod-weaver
+version: 3.093530

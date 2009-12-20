@@ -1,7 +1,5 @@
 package Pod::Weaver::Section::Generic;
-our $VERSION = '3.093130';
-
-
+our $VERSION = '3.093530';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 # ABSTRACT: a generic section, found by lifting sections
@@ -66,7 +64,7 @@ Pod::Weaver::Section::Generic - a generic section, found by lifting sections
 
 =head1 VERSION
 
-version 3.093130
+version 3.093530
 
 =head1 OVERVIEW
 
