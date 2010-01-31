@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
 use Moose;
 # ABSTRACT: weave together a Pod document from an outline
 
@@ -17,7 +17,7 @@ use String::Flogger;
 {
   package
     Pod::Weaver::_Logger;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
   sub log { printf "%s\n", String::Flogger->flog($_[1]) }
   sub new { bless {} => $_[0] }
 }
@@ -155,7 +155,7 @@ Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 3.093530
+version 3.100310
 
 =head1 SYNOPSIS
 
@@ -233,7 +233,7 @@ L<Pod::Weaver::PluginBundle::Default>.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2010 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

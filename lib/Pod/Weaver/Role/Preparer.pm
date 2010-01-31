@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Preparer;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
 # ABSTRACT: something that mucks about with the input before weaving begins
@@ -19,7 +19,7 @@ Pod::Weaver::Role::Preparer - something that mucks about with the input before w
 
 =head1 VERSION
 
-version 3.093530
+version 3.100310
 
 =head1 IMPLEMENTING
 
@@ -34,7 +34,7 @@ the input in place.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2010 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

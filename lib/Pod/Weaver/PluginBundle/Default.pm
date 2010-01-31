@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::Default;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
 
@@ -23,6 +23,7 @@ sub mvp_bundle_config {
 
     [ 'ATTRIBUTES',         _exp('Collect'),   { command => 'attr'   } ],
     [ 'METHODS',            _exp('Collect'),   { command => 'method' } ],
+    [ 'FUNCTIONS',          _exp('Collect'),   { command => 'func'   } ],
 
     [ '@Default/Leftovers', _exp('Leftovers'), {} ],
 
@@ -44,7 +45,7 @@ Pod::Weaver::PluginBundle::Default - a bundle for the most commonly-needed prep 
 
 =head1 VERSION
 
-version 3.093530
+version 3.100310
 
 =head1 OVERVIEW
 
@@ -84,7 +85,7 @@ It is nearly equivalent to the following:
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2010 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

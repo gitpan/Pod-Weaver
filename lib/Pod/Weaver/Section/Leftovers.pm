@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Leftovers;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 with 'Pod::Weaver::Role::Finalizer';
@@ -65,7 +65,7 @@ Pod::Weaver::Section::Leftovers - a place to put everything that nothing else us
 
 =head1 VERSION
 
-version 3.093530
+version 3.100310
 
 =head1 OVERVIEW
 
@@ -83,7 +83,7 @@ document.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2010 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

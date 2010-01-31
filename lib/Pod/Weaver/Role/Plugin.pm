@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '3.093530';
+our $VERSION = '3.100310';
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
 
@@ -32,7 +32,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.093530
+version 3.100310
 
 =head1 ATTRIBUTES
 
@@ -56,7 +56,7 @@ This is the most basic role that all plugins must perform.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2010 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
