@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Name;
-our $VERSION = '3.100310';
+our $VERSION = '3.100650';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 # ABSTRACT: add a NAME section with abstract (for your Perl module)
@@ -17,7 +17,7 @@ sub weave_section {
   return unless my $ppi_document = $input->{ppi_document};
   my $pkg_node = $ppi_document->find_first('PPI::Statement::Package');
 
-  my $filename = 'file'; # $arg->{filename}
+  my $filename = $input->{filename} || 'file';
 
   Carp::croak sprintf "couldn't find package declaration in %s", $filename
     unless $pkg_node;
@@ -54,7 +54,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 3.100310
+version 3.100650
 
 =head1 OVERVIEW
 

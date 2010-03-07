@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Dialect;
-our $VERSION = '3.100310';
+our $VERSION = '3.100650';
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
 # ABSTRACT: something that translates Pod subdialects to standard Pod5
@@ -19,7 +19,7 @@ Pod::Weaver::Role::Dialect - something that translates Pod subdialects to standa
 
 =head1 VERSION
 
-version 3.100310
+version 3.100650
 
 =head1 IMPLEMENTING
 

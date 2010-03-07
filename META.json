@@ -1,34 +1,55 @@
 {
    "resources" : {
-      "repository" : "http://github.com/rjbs/pod-weaver"
+      "repository" : "git://git.codesimply.com/Pod-Weaver.git"
    },
-   "generated_by" : "Dist::Zilla version 1.100160",
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "3.100310",
+   "generated_by" : "Dist::Zilla version 1.100651",
+   "version" : "3.100650",
    "name" : "Pod-Weaver",
    "author" : [
       "Ricardo SIGNES <rjbs@cpan.org>"
    ],
    "license" : "perl",
+   "build_requires" : {},
    "requires" : {
-      "Config::MVP::Reader::INI" : "0",
       "PPI" : "0",
-      "namespace::autoclean" : "0",
+      "Config::MVP::Assembler" : "0",
       "Pod::Elemental" : "0.100220",
-      "ExtUtils::MakeMaker" : "6.11",
       "String::RewritePrefix" : "0",
+      "Pod::Elemental::Element::Pod5::Region" : "0",
       "Pod::Eventual::Simple" : "0.004",
-      "Moose::Autobox" : "0.10",
-      "Test::Differences" : "0",
+      "Pod::Elemental::Element::Pod5::Verbatim" : "0",
       "Config::MVP" : "0.093120",
+      "Pod::Elemental::Element::Pod5::Command" : "0",
+      "Config::MVP::Assembler::WithBundles" : "0",
       "Software::License" : "0",
       "List::MoreUtils" : "0",
       "Moose" : "0",
-      "String::Flogger" : "1"
+      "String::Flogger" : "1",
+      "Moose::Role" : "0",
+      "Config::MVP::Reader::INI" : "0",
+      "namespace::autoclean" : "0",
+      "Pod::Elemental::Types" : "0",
+      "Pod::Elemental::Transformer::Gatherer" : "0",
+      "Config::MVP::Reader" : "0",
+      "Moose::Autobox" : "0.10",
+      "Test::More" : "0",
+      "Test::Differences" : "0",
+      "Pod::Elemental::Element::Pod5::Ordinary" : "0",
+      "Pod::Elemental::Document" : "0",
+      "Pod::Elemental::Transformer::Pod5" : "0",
+      "Config::MVP::Reader::Finder" : "0",
+      "Pod::Elemental::Transformer::Nester" : "0",
+      "Pod::Elemental::Selectors" : "0",
+      "Pod::Elemental::Element::Nested" : "0",
+      "Software::License::Artistic_1_0" : "0"
    },
-   "abstract" : "weave together a Pod document from an outline"
+   "abstract" : "weave together a Pod document from an outline",
+   "configure_requires" : {
+      "ExtUtils::MakeMaker" : "6.11"
+   }
 }
 

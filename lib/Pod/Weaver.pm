@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '3.100310';
+our $VERSION = '3.100650';
 use Moose;
 # ABSTRACT: weave together a Pod document from an outline
 
@@ -17,15 +17,23 @@ use String::Flogger;
 {
   package
     Pod::Weaver::_Logger;
-our $VERSION = '3.100310';
-  sub log { printf "%s\n", String::Flogger->flog($_[1]) }
+our $VERSION = '3.100650';
+  sub log {
+    shift;
+    printf "%s\n", join q{ }, map {; String::Flogger->flog($_) } @_;
+  }
+  sub log_fatal {
+    shift;
+    die sprintf "%s\n", join q{ }, map {; String::Flogger->flog($_) } @_;
+  }
+  sub log_debug { }
   sub new { bless {} => $_[0] }
 }
 
 has logger => (
   lazy    => 1,
   default => sub { Pod::Weaver::_Logger->new },
-  handles => [ qw(log) ]
+  handles => [ qw(log log_fatal log_debug) ]
 );
 
 
@@ -79,7 +87,7 @@ sub weave_document {
 
 
 sub new_with_default_config {
-  my ($class) = @_;
+  my ($class, $arg) = @_;
 
   my $assembler = Pod::Weaver::Config::Assembler->new;
 
@@ -89,29 +97,35 @@ sub new_with_default_config {
   $assembler->change_section('@Default');
   $assembler->end_section;
 
-  return $class->new_from_config_sequence($assembler->sequence);
+  return $class->new_from_config_sequence($assembler->sequence, $arg);
 }
 
 sub new_from_config {
-  my ($class, $arg) = @_;
+  my ($class, $arg, $new_arg) = @_;
   
   my ($sequence) = Pod::Weaver::Config::Finder->new->read_config({
     root     => $arg->{root}     || '.',
     basename => $arg->{basename} || 'weaver',
   });
 
-  return $class->new_from_config_sequence($sequence);
+  return $class->new_from_config_sequence($sequence, $new_arg);
 }
 
 sub new_from_config_sequence {
-  my ($class, $seq) = @_;
+  my ($class, $seq, $arg) = @_;
+  $arg ||= {};
+
+  my $merge = $arg->{root_config} || {};
 
   confess("config must be a Config::MVP::Sequence")
     unless $seq and $seq->isa('Config::MVP::Sequence');
 
   my $core_config = $seq->section_named('_')->payload;
 
-  my $self = $class->new($core_config);
+  my $self = $class->new({
+    %$merge,
+    %$core_config,
+  });
 
   for my $section ($seq->sections) {
     next if $section->name eq '_';
@@ -155,7 +169,7 @@ Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 3.100310
+version 3.100650
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '3.100310';
+our $VERSION = '3.100650';
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
 
@@ -21,6 +21,15 @@ has weaver => (
   handles  => [ qw(log) ],
 );
 
+for my $method (qw(log log_debug log_fatal)) {
+  Sub::Install::install_sub({
+    code => sub {
+      my $self = shift;
+      $self->weaver->$method($self->plugin_name, @_); },
+    as   => $method,
+  });
+}
+
 1;
 
 __END__
@@ -32,7 +41,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.100310
+version 3.100650
 
 =head1 ATTRIBUTES
 
