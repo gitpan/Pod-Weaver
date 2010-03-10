@@ -1,5 +1,5 @@
 package Pod::Weaver;
-our $VERSION = '3.100650';
+our $VERSION = '3.100680';
 use Moose;
 # ABSTRACT: weave together a Pod document from an outline
 
@@ -17,13 +17,15 @@ use String::Flogger;
 {
   package
     Pod::Weaver::_Logger;
-our $VERSION = '3.100650';
+our $VERSION = '3.100680';
   sub log {
     shift;
+    shift if ref $_[0] eq 'HASH';
     printf "%s\n", join q{ }, map {; String::Flogger->flog($_) } @_;
   }
   sub log_fatal {
     shift;
+    shift if ref $_[0] eq 'HASH';
     die sprintf "%s\n", join q{ }, map {; String::Flogger->flog($_) } @_;
   }
   sub log_debug { }
@@ -31,6 +33,7 @@ our $VERSION = '3.100650';
 }
 
 has logger => (
+  is      => 'ro',
   lazy    => 1,
   default => sub { Pod::Weaver::_Logger->new },
   handles => [ qw(log log_fatal log_debug) ]
@@ -169,7 +172,7 @@ Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 3.100650
+version 3.100680
 
 =head1 SYNOPSIS
 

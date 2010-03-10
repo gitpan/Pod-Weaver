@@ -1,7 +1,9 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '3.100650';
+our $VERSION = '3.100680';
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
+
+use Params::Util qw(_HASHLIKE);
 
 use namespace::autoclean;
 
@@ -18,14 +20,18 @@ has weaver => (
   isa => 'Pod::Weaver',
   required => 1,
   weak_ref => 1,
-  handles  => [ qw(log) ],
 );
 
 for my $method (qw(log log_debug log_fatal)) {
   Sub::Install::install_sub({
     code => sub {
-      my $self = shift;
-      $self->weaver->$method($self->plugin_name, @_); },
+      my ($self, @rest) = @_;
+      my $arg = _HASHLIKE($rest[0]) ? (shift @rest) : {};
+      local $arg->{prefix} = '[' . $self->plugin_name . '] '
+                           . (defined $arg->{prefix} ? $arg->{prefix} : '');
+
+      $self->weaver->logger->$method($arg, @rest);
+    },
     as   => $method,
   });
 }
@@ -41,7 +47,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.100650
+version 3.100680
 
 =head1 ATTRIBUTES
 
