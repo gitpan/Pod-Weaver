@@ -1,5 +1,5 @@
 package Pod::Weaver::Plugin::Transformer;
-our $VERSION = '3.100680';
+our $VERSION = '3.100710';
 use Moose;
 with 'Pod::Weaver::Role::Dialect';
 # ABSTRACT: apply arbitrary transformers
@@ -59,7 +59,7 @@ Pod::Weaver::Plugin::Transformer - apply arbitrary transformers
 
 =head1 VERSION
 
-version 3.100680
+version 3.100710
 
 =head1 OVERVIEW
 

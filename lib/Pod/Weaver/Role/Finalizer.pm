@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Finalizer;
-our $VERSION = '3.100680';
+our $VERSION = '3.100710';
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
 # ABSTRACT: something that goes back and finishes up after main weaving is over
@@ -19,7 +19,7 @@ Pod::Weaver::Role::Finalizer - something that goes back and finishes up after ma
 
 =head1 VERSION
 
-version 3.100680
+version 3.100710
 
 =head1 IMPLEMENTING
 

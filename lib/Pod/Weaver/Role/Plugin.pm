@@ -1,5 +1,5 @@
 package Pod::Weaver::Role::Plugin;
-our $VERSION = '3.100680';
+our $VERSION = '3.100710';
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
 
@@ -22,19 +22,16 @@ has weaver => (
   weak_ref => 1,
 );
 
-for my $method (qw(log log_debug log_fatal)) {
-  Sub::Install::install_sub({
-    code => sub {
-      my ($self, @rest) = @_;
-      my $arg = _HASHLIKE($rest[0]) ? (shift @rest) : {};
-      local $arg->{prefix} = '[' . $self->plugin_name . '] '
-                           . (defined $arg->{prefix} ? $arg->{prefix} : '');
-
-      $self->weaver->logger->$method($arg, @rest);
-    },
-    as   => $method,
-  });
-}
+has logger => (
+  is   => 'ro',
+  lazy => 1,
+  handles => [ qw(log log_debug log_fatal) ],
+  default => sub {
+    $_[0]->weaver->logger->proxy({
+      proxy_prefix => '[' . $_[0]->plugin_name . '] ',
+    });
+  },
+);
 
 1;
 
@@ -47,7 +44,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.100680
+version 3.100710
 
 =head1 ATTRIBUTES
 

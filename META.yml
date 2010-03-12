@@ -5,7 +5,7 @@ author:
 build_requires: {}
 configure_requires:
   ExtUtils::MakeMaker: 6.11
-generated_by: 'Dist::Zilla version 1.100680'
+generated_by: 'Dist::Zilla version 1.100710'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,6 +19,7 @@ requires:
   Config::MVP::Reader::Finder: 0
   Config::MVP::Reader::INI: 0
   List::MoreUtils: 0
+  Log::Dispatchouli: 1.100710
   Moose: 0
   Moose::Autobox: 0.10
   Moose::Role: 0
@@ -46,4 +47,4 @@ requires:
   namespace::autoclean: 0
 resources:
   repository: git://git.codesimply.com/Pod-Weaver.git
-version: 3.100680
+version: 3.100710

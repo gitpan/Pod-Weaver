@@ -1,5 +1,5 @@
 package Pod::Weaver::Section::Name;
-our $VERSION = '3.100680';
+our $VERSION = '3.100710';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 # ABSTRACT: add a NAME section with abstract (for your Perl module)
@@ -54,7 +54,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 3.100680
+version 3.100710
 
 =head1 OVERVIEW
 
