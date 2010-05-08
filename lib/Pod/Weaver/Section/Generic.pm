@@ -1,5 +1,7 @@
 package Pod::Weaver::Section::Generic;
-our $VERSION = '3.100710';
+BEGIN {
+  $Pod::Weaver::Section::Generic::VERSION = '3.101270';
+}
 use Moose;
 with 'Pod::Weaver::Role::Section';
 # ABSTRACT: a generic section, found by lifting sections
@@ -17,6 +19,13 @@ has required => (
   default => 0,
 );
 
+has header => (
+  is   => 'ro',
+  isa  => 'Str',
+  lazy => 1,
+  default => sub { $_[0]->plugin_name },
+);
+
 has selector => (
   is  => 'ro',
   isa => 'CodeRef',
@@ -25,7 +34,7 @@ has selector => (
     my ($self) = @_;
     return sub {
       return unless s_command(head1 => $_[0]);
-      return unless $_[0]->content eq $self->plugin_name;
+      return unless $_[0]->content eq $self->header;
     };
   },
 );
@@ -64,7 +73,7 @@ Pod::Weaver::Section::Generic - a generic section, found by lifting sections
 
 =head1 VERSION
 
-version 3.100710
+version 3.101270
 
 =head1 OVERVIEW
 
@@ -73,10 +82,18 @@ find a C<=head1> command with a content of the plugin's name.
 
 In other words, if your configuration include:
 
-  [Generic / OVERVIEW]
+  [Generic]
+  header = OVERVIEW
 
 ...then this weaver will look for "=head1 OVERVIEW" and include it at the
 appropriate location in your output.
+
+Since you'll probably want to use Generic several times, and that will require
+giving each use a unique name, you can omit C<header> if you provide a
+plugin name, and it will default to the plugin name.  In other words, the
+configuration above could be specified just as:
+
+  [Generic / OVERVIEW]
 
 If the C<required> attribute is given, and true, then an exception will be
 raised if this section can't be found.

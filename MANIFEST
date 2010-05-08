@@ -34,5 +34,4 @@ t/eg/basic.in.pod
 t/eg/basic.out.pod
 t/eg/weaver.ini
 t/ini-config.t
-t/release-pod-coverage.t
 t/release-pod-syntax.t

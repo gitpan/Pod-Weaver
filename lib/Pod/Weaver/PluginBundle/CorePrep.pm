@@ -1,7 +1,9 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::CorePrep;
-our $VERSION = '3.100710';
+BEGIN {
+  $Pod::Weaver::PluginBundle::CorePrep::VERSION = '3.101270';
+}
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
 use Pod::Weaver::Plugin::H1Nester;
@@ -25,7 +27,7 @@ Pod::Weaver::PluginBundle::CorePrep - a bundle for the most commonly-needed prep
 
 =head1 VERSION
 
-version 3.100710
+version 3.101270
 
 =head1 AUTHOR
 

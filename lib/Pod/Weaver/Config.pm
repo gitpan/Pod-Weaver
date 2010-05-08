@@ -1,8 +1,11 @@
 package Pod::Weaver::Config;
-our $VERSION = '3.100710';
+BEGIN {
+  $Pod::Weaver::Config::VERSION = '3.101270';
+}
 use Moose::Role;
 # ABSTRACT: stored configuration loader role
 
+use Config::MVP 0.093120;
 with q(Config::MVP::Reader) => { -excludes => 'build_assembler' };
 
 use Pod::Weaver::Config::Assembler;
@@ -32,7 +35,7 @@ Pod::Weaver::Config - stored configuration loader role
 
 =head1 VERSION
 
-version 3.100710
+version 3.101270
 
 =head1 DESCRIPTION
 
