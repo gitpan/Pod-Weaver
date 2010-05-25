@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Region;
 BEGIN {
-  $Pod::Weaver::Section::Region::VERSION = '3.101270';
+  $Pod::Weaver::Section::Region::VERSION = '3.101450';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -59,7 +59,7 @@ Pod::Weaver::Section::Region - find a region and put its contents in place where
 
 =head1 VERSION
 
-version 3.101270
+version 3.101450
 
 =head1 AUTHOR
 
