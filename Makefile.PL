@@ -25,10 +25,9 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Pod::Weaver',
   'PREREQ_PM' => {
-    'Config::MVP' => '1',
+    'Config::MVP' => '2',
     'Config::MVP::Assembler' => '0',
     'Config::MVP::Assembler::WithBundles' => '0',
-    'Config::MVP::Reader' => '0',
     'Config::MVP::Reader::Finder' => '0',
     'Config::MVP::Reader::INI' => '0',
     'File::Spec' => '0',
@@ -54,7 +53,7 @@ my %WriteMakefileArgs = (
     'String::RewritePrefix' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '3.101450',
+  'VERSION' => '3.101460',
   'test' => {
     'TESTS' => 't/*.t'
   }

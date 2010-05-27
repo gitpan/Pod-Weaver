@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Dialect;
 BEGIN {
-  $Pod::Weaver::Role::Dialect::VERSION = '3.101450';
+  $Pod::Weaver::Role::Dialect::VERSION = '3.101460';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Dialect - something that translates Pod subdialects to standa
 
 =head1 VERSION
 
-version 3.101450
+version 3.101460
 
 =head1 IMPLEMENTING
 
