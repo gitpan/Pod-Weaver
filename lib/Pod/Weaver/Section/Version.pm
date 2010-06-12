@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Version;
 BEGIN {
-  $Pod::Weaver::Section::Version::VERSION = '3.101460';
+  $Pod::Weaver::Section::Version::VERSION = '3.101630';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -39,7 +39,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 OVERVIEW
 
@@ -54,7 +54,7 @@ It will do nothing if there is no C<version> entry in the input.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

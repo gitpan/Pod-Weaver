@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Collect;
 BEGIN {
-  $Pod::Weaver::Section::Collect::VERSION = '3.101460';
+  $Pod::Weaver::Section::Collect::VERSION = '3.101630';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -107,7 +107,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 OVERVIEW
 
@@ -124,7 +124,7 @@ in the source document.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

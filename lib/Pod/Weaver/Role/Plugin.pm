@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Plugin;
 BEGIN {
-  $Pod::Weaver::Role::Plugin::VERSION = '3.101460';
+  $Pod::Weaver::Role::Plugin::VERSION = '3.101630';
 }
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
@@ -46,7 +46,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 ATTRIBUTES
 
@@ -66,7 +66,7 @@ This is the most basic role that all plugins must perform.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

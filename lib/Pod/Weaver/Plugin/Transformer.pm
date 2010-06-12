@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::Transformer;
 BEGIN {
-  $Pod::Weaver::Plugin::Transformer::VERSION = '3.101460';
+  $Pod::Weaver::Plugin::Transformer::VERSION = '3.101630';
 }
 use Moose;
 with 'Pod::Weaver::Role::Dialect';
@@ -61,7 +61,7 @@ Pod::Weaver::Plugin::Transformer - apply arbitrary transformers
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 OVERVIEW
 
@@ -83,7 +83,7 @@ and that transformer will then be handed the entire input Pod document.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

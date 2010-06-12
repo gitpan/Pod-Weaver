@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Authors;
 BEGIN {
-  $Pod::Weaver::Section::Authors::VERSION = '3.101460';
+  $Pod::Weaver::Section::Authors::VERSION = '3.101630';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -17,19 +17,36 @@ sub weave_section {
 
   return unless $input->{authors};
 
-  my $name = $input->{authors}->length > 1 ? 'AUTHORS' : 'AUTHOR';
-  my $str  = $input->{authors}->join("\n");
+  my $multiple_authors = $input->{authors}->length > 1;
 
-  $str =~ s{^}{  }mg;
+  my $name = $multiple_authors ? 'AUTHORS' : 'AUTHOR';
+  my $authors = $input->{authors}->map(sub {
+    Pod::Elemental::Element::Pod5::Ordinary->new({
+      content => $_,
+    }),
+  });
+
+  $authors = [
+    Pod::Elemental::Element::Pod5::Command->new({
+      command => 'over', content => '4',
+    }),
+    $authors->map(sub {
+      Pod::Elemental::Element::Pod5::Command->new({
+        command => 'item', content => '*',
+      }),
+      $_,
+    })->flatten,
+    Pod::Elemental::Element::Pod5::Command->new({
+      command => 'back', content => '',
+    }),
+  ] if $multiple_authors;
 
   $document->children->push(
     Pod::Elemental::Element::Nested->new({
       type     => 'command',
       command  => 'head1',
       content  => $name,
-      children => [
-        Pod::Elemental::Element::Pod5::Verbatim->new({ content => $str }),
-      ],
+      children => $authors,
     }),
   );
 }
@@ -46,7 +63,7 @@ Pod::Weaver::Section::Authors - a section listing authors
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 OVERVIEW
 
@@ -61,7 +78,7 @@ given, it will do nothing.  Otherwise, it produces a hunk like this:
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

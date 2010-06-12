@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::EnsurePod5;
 BEGIN {
-  $Pod::Weaver::Plugin::EnsurePod5::VERSION = '3.101460';
+  $Pod::Weaver::Plugin::EnsurePod5::VERSION = '3.101630';
 }
 use Moose;
 with 'Pod::Weaver::Role::Preparer';
@@ -54,7 +54,7 @@ Pod::Weaver::Plugin::EnsurePod5 - ensure that the Pod5 translator has been run o
 
 =head1 VERSION
 
-version 3.101460
+version 3.101630
 
 =head1 OVERVIEW
 
@@ -64,7 +64,7 @@ non-whitespace-only Nonpod elements are found, an exception is raised.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
