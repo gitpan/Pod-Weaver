@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Generic;
 BEGIN {
-  $Pod::Weaver::Section::Generic::VERSION = '3.101630';
+  $Pod::Weaver::Section::Generic::VERSION = '3.101631';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -9,15 +9,16 @@ with 'Pod::Weaver::Role::Section';
 use Moose::Autobox;
 
 
-
 use Pod::Elemental::Element::Pod5::Region;
 use Pod::Elemental::Selectors -all;
+
 
 has required => (
   is  => 'ro',
   isa => 'Bool',
   default => 0,
 );
+
 
 has header => (
   is   => 'ro',
@@ -49,8 +50,8 @@ sub weave_section {
     push @found, $i if $self->selector->($para);
   });
 
-  confess "couldn't find requried Generic section for " . $self->plugin_name
-    if $self->required and not @found;
+  confess "Couldn't find required Generic section for " . $self->header . " in file "
+    . (defined $input->{filename} ? $input->{filename} : '') if $self->required and not @found;
 
   my @to_add;
   for my $i (reverse @found) {
@@ -73,7 +74,7 @@ Pod::Weaver::Section::Generic - a generic section, found by lifting sections
 
 =head1 VERSION
 
-version 3.101630
+version 3.101631
 
 =head1 OVERVIEW
 
@@ -97,6 +98,19 @@ configuration above could be specified just as:
 
 If the C<required> attribute is given, and true, then an exception will be
 raised if this section can't be found.
+
+=head1 ATTRIBUTES
+
+=head2 required
+
+A boolean value specifying whether this section is required to be present or not. Defaults
+to false.
+
+If it's enabled and the section can't be found an exception will be raised.
+
+=head2 header
+
+The name of this section. Defaults to the plugin name.
 
 =head1 AUTHOR
 

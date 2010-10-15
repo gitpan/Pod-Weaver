@@ -1,6 +1,6 @@
 package Pod::Weaver::Config::Assembler;
 BEGIN {
-  $Pod::Weaver::Config::Assembler::VERSION = '3.101630';
+  $Pod::Weaver::Config::Assembler::VERSION = '3.101631';
 }
 use Moose;
 extends 'Config::MVP::Assembler';
@@ -35,7 +35,7 @@ Pod::Weaver::Config::Assembler - Pod::Weaver-specific subclass of Config::MVP::A
 
 =head1 VERSION
 
-version 3.101630
+version 3.101631
 
 =head1 AUTHOR
 

@@ -50,10 +50,12 @@ my %WriteMakefileArgs = (
     'Pod::Elemental::Transformer::Pod5' => '0',
     'Pod::Elemental::Types' => '0',
     'String::Flogger' => '1',
+    'String::Formatter' => '0.100680',
     'String::RewritePrefix' => '0',
+    'Text::Wrap' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '3.101630',
+  'VERSION' => '3.101631',
   'test' => {
     'TESTS' => 't/*.t'
   }

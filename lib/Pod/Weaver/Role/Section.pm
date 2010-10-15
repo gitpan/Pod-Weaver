@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Section;
 BEGIN {
-  $Pod::Weaver::Role::Section::VERSION = '3.101630';
+  $Pod::Weaver::Role::Section::VERSION = '3.101631';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Section - a plugin that will get a section into a woven docum
 
 =head1 VERSION
 
-version 3.101630
+version 3.101631
 
 =head1 IMPLEMENTING
 
