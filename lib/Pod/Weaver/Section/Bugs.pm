@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Bugs;
 BEGIN {
-  $Pod::Weaver::Section::Bugs::VERSION = '3.101631';
+  $Pod::Weaver::Section::Bugs::VERSION = '3.101632';
 }
 use Moose;
 use Text::Wrap ();
@@ -61,7 +61,7 @@ Pod::Weaver::Section::Bugs - a section for bugtracker info
 
 =head1 VERSION
 
-version 3.101631
+version 3.101632
 
 =head1 OVERVIEW
 

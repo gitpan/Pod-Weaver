@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Version;
 BEGIN {
-  $Pod::Weaver::Section::Version::VERSION = '3.101631';
+  $Pod::Weaver::Section::Version::VERSION = '3.101632';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -9,6 +9,7 @@ with 'Pod::Weaver::Role::Section';
 use namespace::autoclean;
 
 
+use DateTime;
 use Moose::Autobox;
 
 use String::Formatter 0.100680 stringf => {
@@ -63,7 +64,7 @@ sub weave_section {
 
   if ( exists $input->{ppi_document} ) {
     my $pkg_node = $input->{ppi_document}->find_first('PPI::Statement::Package');
-    $args{module} = $pkg_node->namespace if defined $pkg_node;
+    $args{module} = $pkg_node->namespace if $pkg_node;
   }
 
   my $content = _format_version($self->format, \%args);
@@ -99,7 +100,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101631
+version 3.101632
 
 =head1 OVERVIEW
 

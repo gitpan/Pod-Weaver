@@ -22,6 +22,7 @@ requires:
   Config::MVP::Assembler::WithBundles: 0
   Config::MVP::Reader::Finder: 0
   Config::MVP::Reader::INI: 0
+  DateTime: 0
   File::Spec: 0
   List::MoreUtils: 0
   Log::Dispatchouli: 1.100710
@@ -48,7 +49,7 @@ requires:
   namespace::autoclean: 0
 resources:
   repository: git://git.codesimply.com/Pod-Weaver.git
-version: 3.101631
+version: 3.101632
 x_Dist_Zilla:
   plugins:
     -

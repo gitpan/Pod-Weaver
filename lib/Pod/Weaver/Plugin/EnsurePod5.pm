@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::EnsurePod5;
 BEGIN {
-  $Pod::Weaver::Plugin::EnsurePod5::VERSION = '3.101631';
+  $Pod::Weaver::Plugin::EnsurePod5::VERSION = '3.101632';
 }
 use Moose;
 with 'Pod::Weaver::Role::Preparer';
@@ -54,7 +54,7 @@ Pod::Weaver::Plugin::EnsurePod5 - ensure that the Pod5 translator has been run o
 
 =head1 VERSION
 
-version 3.101631
+version 3.101632
 
 =head1 OVERVIEW
 

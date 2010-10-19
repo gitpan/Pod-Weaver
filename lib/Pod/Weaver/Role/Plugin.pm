@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Plugin;
 BEGIN {
-  $Pod::Weaver::Role::Plugin::VERSION = '3.101631';
+  $Pod::Weaver::Role::Plugin::VERSION = '3.101632';
 }
 use Moose::Role;
 # ABSTRACT: a Pod::Weaver plugin
@@ -46,7 +46,7 @@ Pod::Weaver::Role::Plugin - a Pod::Weaver plugin
 
 =head1 VERSION
 
-version 3.101631
+version 3.101632
 
 =head1 ATTRIBUTES
 

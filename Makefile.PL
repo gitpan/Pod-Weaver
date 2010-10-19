@@ -30,6 +30,7 @@ my %WriteMakefileArgs = (
     'Config::MVP::Assembler::WithBundles' => '0',
     'Config::MVP::Reader::Finder' => '0',
     'Config::MVP::Reader::INI' => '0',
+    'DateTime' => '0',
     'File::Spec' => '0',
     'List::MoreUtils' => '0',
     'Log::Dispatchouli' => '1.100710',
@@ -55,7 +56,7 @@ my %WriteMakefileArgs = (
     'Text::Wrap' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '3.101631',
+  'VERSION' => '3.101632',
   'test' => {
     'TESTS' => 't/*.t'
   }
