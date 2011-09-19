@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::Default;
-BEGIN {
-  $Pod::Weaver::PluginBundle::Default::VERSION = '3.101632';
+{
+  $Pod::Weaver::PluginBundle::Default::VERSION = '3.101633';
 }
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
@@ -47,7 +47,7 @@ Pod::Weaver::PluginBundle::Default - a bundle for the most commonly-needed prep 
 
 =head1 VERSION
 
-version 3.101632
+version 3.101633
 
 =head1 OVERVIEW
 
@@ -87,7 +87,7 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Ricardo SIGNES.
+This software is copyright (c) 2011 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

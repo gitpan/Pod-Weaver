@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Finalizer;
-BEGIN {
-  $Pod::Weaver::Role::Finalizer::VERSION = '3.101632';
+{
+  $Pod::Weaver::Role::Finalizer::VERSION = '3.101633';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Finalizer - something that goes back and finishes up after ma
 
 =head1 VERSION
 
-version 3.101632
+version 3.101633
 
 =head1 IMPLEMENTING
 
@@ -37,7 +37,7 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Ricardo SIGNES.
+This software is copyright (c) 2011 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

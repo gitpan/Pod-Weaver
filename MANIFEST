@@ -51,6 +51,8 @@ t/eg/version_t4.in.pod
 t/eg/version_t4.out.pod
 t/eg/version_t5.in.pod
 t/eg/version_t5.out.pod
+t/eg/version_without_package.in.pod
+t/eg/version_without_package.out.pod
 t/eg/weaver.ini
 t/ini-config.t
 t/region_options.t
@@ -58,3 +60,4 @@ t/release-pod-syntax.t
 t/required_region.t
 t/required_section.t
 t/version_options.t
+t/version_without_package.t
