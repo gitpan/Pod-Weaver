@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Legal;
 {
-  $Pod::Weaver::Section::Legal::VERSION = '3.101633';
+  $Pod::Weaver::Section::Legal::VERSION = '3.101634';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -9,6 +9,13 @@ with 'Pod::Weaver::Role::Section';
 use Moose::Autobox;
 
 
+
+has license_file => (
+  is => 'ro',
+  isa => 'Str',
+  predicate => '_has_license_file',
+);
+
 sub weave_section {
   my ($self, $document, $input) = @_;
 
@@ -16,6 +23,11 @@ sub weave_section {
 
   my $notice = $input->{license}->notice;
   chomp $notice;
+
+  if ( $self->_has_license_file ) {
+    $notice .= "\n\nThe full text of the license can be found in the\n'";
+    $notice .= $self->license_file . "' file included with this distribution.";
+  }
 
   $document->children->push(
     Pod::Elemental::Element::Nested->new({
@@ -40,7 +52,7 @@ Pod::Weaver::Section::Legal - a section for the copyright and license
 
 =head1 VERSION
 
-version 3.101633
+version 3.101634
 
 =head1 OVERVIEW
 
@@ -55,6 +67,15 @@ information for the document, like this:
 
 This plugin will do nothing if no C<license> input parameter is available.  The
 C<license> is expected to be a L<Software::License> object.
+
+=head1 ATTRIBUTES
+
+=head2 license_file
+
+Specify the name of the license file and an extra line of text will be added
+telling users to check the file for the full text of the license.
+
+Defaults to none.
 
 =head1 AUTHOR
 

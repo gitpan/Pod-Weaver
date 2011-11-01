@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Version;
 {
-  $Pod::Weaver::Section::Version::VERSION = '3.101633';
+  $Pod::Weaver::Section::Version::VERSION = '3.101634';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -25,7 +25,13 @@ use String::Formatter 0.100680 stringf => {
               ->format_cldr($_[1]),
     },
     r => sub { $_[0]->{zilla}->name },
-    m => sub { $_[0]->{module} },
+    m => sub {
+      return $_[0]->{module} if defined $_[0]->{module};
+      $_[0]->{self}->log_fatal([
+        "%%m format used for Version section, but no package declaration found in %s",
+        $_[0]->{filename},
+      ]);
+    },
     t => sub { "\t" },
     n => sub { "\n" },
   },
@@ -57,8 +63,9 @@ sub weave_section {
   return unless $input->{version};
 
   my %args = (
-    self => $self,
-    version => $input->{version},
+    self     => $self,
+    version  => $input->{version},
+    filename => $input->{filename},
   );
   $args{zilla} = $input->{zilla} if exists $input->{zilla};
 
@@ -100,7 +107,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101633
+version 3.101634
 
 =head1 OVERVIEW
 

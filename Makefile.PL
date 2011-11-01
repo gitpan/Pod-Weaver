@@ -14,6 +14,7 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "PPI" => 0,
     "Software::License::Artistic_1_0" => 0,
+    "Software::License::Perl_5" => 0,
     "Test::Differences" => 0,
     "Test::More" => "0.96"
   },
@@ -58,7 +59,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "3.101633",
+  "VERSION" => "3.101634",
   "test" => {
     "TESTS" => "t/*.t"
   }

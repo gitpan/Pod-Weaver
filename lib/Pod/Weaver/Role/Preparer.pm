@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Preparer;
 {
-  $Pod::Weaver::Role::Preparer::VERSION = '3.101633';
+  $Pod::Weaver::Role::Preparer::VERSION = '3.101634';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -21,7 +21,7 @@ Pod::Weaver::Role::Preparer - something that mucks about with the input before w
 
 =head1 VERSION
 
-version 3.101633
+version 3.101634
 
 =head1 IMPLEMENTING
 

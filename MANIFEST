@@ -33,6 +33,10 @@ lib/Pod/Weaver/Section/Version.pm
 t/basic.t
 t/eg/basic.in.pod
 t/eg/basic.out.pod
+t/eg/legal_t1.in.pod
+t/eg/legal_t1.out.pod
+t/eg/legal_t2.in.pod
+t/eg/legal_t2.out.pod
 t/eg/region_t1.in.pod
 t/eg/region_t1.out.pod
 t/eg/region_t2.in.pod
@@ -55,6 +59,7 @@ t/eg/version_without_package.in.pod
 t/eg/version_without_package.out.pod
 t/eg/weaver.ini
 t/ini-config.t
+t/legal_section.t
 t/region_options.t
 t/release-pod-syntax.t
 t/required_region.t
