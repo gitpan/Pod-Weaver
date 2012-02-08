@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Name;
 {
-  $Pod::Weaver::Section::Name::VERSION = '3.101634';
+  $Pod::Weaver::Section::Name::VERSION = '3.101635';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -24,7 +24,10 @@ sub _get_docname_via_statement {
 sub _get_docname_via_comment {
   my ($self, $ppi_document) = @_;
 
-  return $self->_extract_comment_content( $ppi_document, qr/^\s*#+\s*PODNAME:\s*(.+)$/m );
+  return $self->_extract_comment_content(
+    $ppi_document,
+    qr/^\s*#+\s*PODNAME:\s*(.+)$/m,
+  );
 }
 
 sub _get_docname {
@@ -41,7 +44,18 @@ sub _get_docname {
 sub _get_abstract {
   my ($self, $input) = @_;
 
-  return $self->_extract_comment_content( $input->{ppi_document}, qr/^\s*#+\s*ABSTRACT:\s*(.+)$/m );
+  my $comment = $self->_extract_comment_content(
+    $input->{ppi_document},
+    qr/^\s*#+\s*ABSTRACT:\s*(.+)$/m,
+  );
+
+  return $comment if $comment;
+
+  # If that failed, fall back to searching the whole document
+  my ($abstract)
+    = $input->{ppi_document}->serialize =~ /^\s*#+\s*ABSTRACT:\s*(.+)$/m;
+
+  return $abstract;
 }
 
 sub _extract_comment_content {
@@ -75,7 +89,7 @@ sub weave_section {
     unless $docname;
 
   $self->log([ "couldn't find abstract in %s", $filename ]) unless $abstract;
- 
+
   my $name = $docname;
   $name .= " - $abstract" if $abstract;
 
@@ -86,7 +100,7 @@ sub weave_section {
       Pod::Elemental::Element::Pod5::Ordinary->new({ content => $name }),
     ],
   });
-  
+
   $document->children->push($name_para);
 }
 
@@ -101,7 +115,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 3.101634
+version 3.101635
 
 =head1 OVERVIEW
 
@@ -127,7 +141,7 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Ricardo SIGNES.
+This software is copyright (c) 2012 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
