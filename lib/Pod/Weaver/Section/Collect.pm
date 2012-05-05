@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Collect;
 {
-  $Pod::Weaver::Section::Collect::VERSION = '3.101635';
+  $Pod::Weaver::Section::Collect::VERSION = '3.101636';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -107,7 +107,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.101635
+version 3.101636
 
 =head1 OVERVIEW
 
@@ -119,7 +119,7 @@ Given the configuration:
 This plugin will start off by gathering and nesting any C<=method> commands
 found in the C<pod_document>.  Those commands, along with their nestable
 content, will be collected under a C<=head1 METHODS> header and placed in the
-correct location in the output stream.  Their order will be preserved as itw as
+correct location in the output stream.  Their order will be preserved as it was
 in the source document.
 
 =head1 AUTHOR

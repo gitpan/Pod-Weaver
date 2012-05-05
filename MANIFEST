@@ -61,8 +61,8 @@ t/eg/weaver.ini
 t/ini-config.t
 t/legal_section.t
 t/region_options.t
-t/release-pod-syntax.t
 t/required_region.t
 t/required_section.t
 t/version_options.t
 t/version_without_package.t
+xt/release/pod-syntax.t

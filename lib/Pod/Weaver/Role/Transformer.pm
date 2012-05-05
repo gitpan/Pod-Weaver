@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Transformer;
 {
-  $Pod::Weaver::Role::Transformer::VERSION = '3.101635';
+  $Pod::Weaver::Role::Transformer::VERSION = '3.101636';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -21,11 +21,11 @@ Pod::Weaver::Role::Transformer - something that restructures a Pod5 document
 
 =head1 VERSION
 
-version 3.101635
+version 3.101636
 
 =head1 IMPLEMENTING
 
-The Preparer role indicates that a plugin will be used to pre-process the input
+The Transformer role indicates that a plugin will be used to pre-process the input
 hashref's Pod document before weaving begins.  The plugin must provide a
 C<transform_document> method which will be called with the input Pod document.
 It is expected to modify the input in place.

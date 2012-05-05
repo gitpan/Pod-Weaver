@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Version;
 {
-  $Pod::Weaver::Section::Version::VERSION = '3.101635';
+  $Pod::Weaver::Section::Version::VERSION = '3.101636';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -58,8 +58,9 @@ has time_zone => (
   default => 'local',
 );
 
-sub weave_section {
-  my ($self, $document, $input) = @_;
+
+sub build_content {
+  my ($self, $input) = @_;
   return unless $input->{version};
 
   my %args = (
@@ -85,11 +86,20 @@ sub weave_section {
     });
   }
 
+  return ($content);
+}
+
+sub weave_section {
+  my ($self, $document, $input) = @_;
+  return unless $input->{version};
+
+  my @content = $self->build_content($input);
+
   $document->children->push(
     Pod::Elemental::Element::Nested->new({
       command  => 'head1',
       content  => 'VERSION',
-      children => [ $content ],
+      children => \@content,
     }),
   );
 }
@@ -107,7 +117,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101635
+version 3.101636
 
 =head1 OVERVIEW
 
@@ -157,6 +167,18 @@ Default: false
 The timezone to use when using L<DateTime> for the format.
 
 Default: local
+
+=head1 METHODS
+
+=head2 build_content
+
+  my @pod_elements = $section->build_content(\%input);
+
+This method is passed the same C<\%input> that goes to the C<weave_section>
+method, and should return a list of pod elements to insert.
+
+In almost all cases, this method is used internally, but could be usefully
+overridden in a subclass.
 
 =head1 AUTHOR
 
