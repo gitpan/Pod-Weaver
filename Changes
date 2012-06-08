@@ -1,5 +1,9 @@
 Revision history for Pod-Weaver
 
+3.101637  2012-06-07 22:18:55 America/New_York
+          add header_command attribute to the Collect section
+          (thanks, Christopher J. Madsen)
+
 3.101636  2012-05-04 21:28:10 America/New_York
           break the content-generating code in the Version section into its own
           method (thanks, Chris Weyl)

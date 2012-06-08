@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::Transformer;
 {
-  $Pod::Weaver::Plugin::Transformer::VERSION = '3.101636';
+  $Pod::Weaver::Plugin::Transformer::VERSION = '3.101637';
 }
 use Moose;
 with 'Pod::Weaver::Role::Dialect';
@@ -61,7 +61,7 @@ Pod::Weaver::Plugin::Transformer - apply arbitrary transformers
 
 =head1 VERSION
 
-version 3.101636
+version 3.101637
 
 =head1 OVERVIEW
 
@@ -69,7 +69,7 @@ This plugin acts as a L<Pod::Weaver::Role::Dialect> that applies an arbitrary
 L<Pod::Elemental::Transformer> to your input document.  It is configured like
 this:
 
-  [Transformer / Lists]
+  [-Transformer / Lists]
   transformer = List
   format_name = outline
 

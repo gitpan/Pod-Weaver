@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Collect;
 {
-  $Pod::Weaver::Section::Collect::VERSION = '3.101636';
+  $Pod::Weaver::Section::Collect::VERSION = '3.101637';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -13,6 +13,7 @@ use Moose::Autobox;
 use Pod::Elemental::Element::Pod5::Region;
 use Pod::Elemental::Selectors -all;
 
+
 has command => (
   is  => 'ro',
   isa => 'Str',
@@ -24,6 +25,13 @@ has new_command => (
   isa => 'Str',
   required => 1,
   default  => 'head2',
+);
+
+has header_command => (
+  is  => 'ro',
+  isa => 'Str',
+  required => 1,
+  default  => 'head1',
 );
 
 has header => (
@@ -55,7 +63,7 @@ sub transform_document {
   });
 
   my $container = Pod::Elemental::Element::Nested->new({
-    command => "head1",
+    command => $self->header_command,
     content => $self->header,
   });
 
@@ -107,7 +115,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.101636
+version 3.101637
 
 =head1 OVERVIEW
 
@@ -121,6 +129,28 @@ found in the C<pod_document>.  Those commands, along with their nestable
 content, will be collected under a C<=head1 METHODS> header and placed in the
 correct location in the output stream.  Their order will be preserved as it was
 in the source document.
+
+=head1 ATTRIBUTES
+
+=head2 command
+
+The command that will be collected (e.g. C<attr> or C<method>).
+(required)
+
+=head2 new_command
+
+The command to be used in the output instead of the collected command.
+(default: C<head2>)
+
+=head2 header_command
+
+The section command for the section to be added.
+(default: C<head1>)
+
+=head2 header
+
+The title of the section to be added.
+(default: the plugin name)
 
 =head1 AUTHOR
 

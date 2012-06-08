@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Leftovers;
 {
-  $Pod::Weaver::Section::Leftovers::VERSION = '3.101636';
+  $Pod::Weaver::Section::Leftovers::VERSION = '3.101637';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -67,7 +67,7 @@ Pod::Weaver::Section::Leftovers - a place to put everything that nothing else us
 
 =head1 VERSION
 
-version 3.101636
+version 3.101637
 
 =head1 OVERVIEW
 
