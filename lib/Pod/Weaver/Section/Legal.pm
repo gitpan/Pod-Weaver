@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Legal;
 {
-  $Pod::Weaver::Section::Legal::VERSION = '3.101637';
+  $Pod::Weaver::Section::Legal::VERSION = '3.101638';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -52,7 +52,7 @@ Pod::Weaver::Section::Legal - a section for the copyright and license
 
 =head1 VERSION
 
-version 3.101637
+version 3.101638
 
 =head1 OVERVIEW
 

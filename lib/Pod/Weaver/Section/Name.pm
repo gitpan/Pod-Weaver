@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Name;
 {
-  $Pod::Weaver::Section::Name::VERSION = '3.101637';
+  $Pod::Weaver::Section::Name::VERSION = '3.101638';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -85,7 +85,7 @@ sub weave_section {
   my $docname  = $self->_get_docname($input);
   my $abstract = $self->_get_abstract($input);
 
-  Carp::croak sprintf "couldn't determine document name for %s", $filename
+  Carp::croak sprintf "couldn't determine document name for %s\nAdd something like this to %s:\n# PODNAME: bobby_tables.pl", $filename, $filename
     unless $docname;
 
   $self->log([ "couldn't find abstract in %s", $filename ]) unless $abstract;
@@ -115,7 +115,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 3.101637
+version 3.101638
 
 =head1 OVERVIEW
 

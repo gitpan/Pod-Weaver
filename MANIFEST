@@ -30,6 +30,8 @@ lib/Pod/Weaver/Section/Legal.pm
 lib/Pod/Weaver/Section/Name.pm
 lib/Pod/Weaver/Section/Region.pm
 lib/Pod/Weaver/Section/Version.pm
+t/00-compile.t
+t/000-report-versions-tiny.t
 t/basic.t
 t/eg/basic.in.pod
 t/eg/basic.out.pod
@@ -65,4 +67,5 @@ t/required_region.t
 t/required_section.t
 t/version_options.t
 t/version_without_package.t
+xt/release/changes_has_content.t
 xt/release/pod-syntax.t

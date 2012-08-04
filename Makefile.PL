@@ -12,6 +12,8 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "weave together a Pod document from an outline",
   "AUTHOR" => "Ricardo SIGNES <rjbs\@cpan.org>",
   "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
     "PPI" => 0,
     "Software::License::Artistic_1_0" => 0,
     "Software::License::Perl_5" => 0,
@@ -59,7 +61,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "3.101637",
+  "VERSION" => "3.101638",
   "test" => {
     "TESTS" => "t/*.t"
   }
