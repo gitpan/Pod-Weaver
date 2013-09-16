@@ -77,16 +77,16 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/rjbs/pod-weaver/issues"
+         "web" : "https://github.com/rjbs/Pod-Weaver/issues"
       },
-      "homepage" : "https://github.com/rjbs/pod-weaver",
+      "homepage" : "https://github.com/rjbs/Pod-Weaver",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/rjbs/pod-weaver.git",
-         "web" : "https://github.com/rjbs/pod-weaver"
+         "url" : "https://github.com/rjbs/Pod-Weaver.git",
+         "web" : "https://github.com/rjbs/Pod-Weaver"
       }
    },
-   "version" : "3.101639",
+   "version" : "3.101640",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019003"

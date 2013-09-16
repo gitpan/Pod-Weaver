@@ -54,10 +54,10 @@ requires:
   strict: 0
   warnings: 0
 resources:
-  bugtracker: https://github.com/rjbs/pod-weaver/issues
-  homepage: https://github.com/rjbs/pod-weaver
-  repository: https://github.com/rjbs/pod-weaver.git
-version: 3.101639
+  bugtracker: https://github.com/rjbs/Pod-Weaver/issues
+  homepage: https://github.com/rjbs/Pod-Weaver
+  repository: https://github.com/rjbs/Pod-Weaver.git
+version: 3.101640
 x_Dist_Zilla:
   perl:
     version: 5.019003
