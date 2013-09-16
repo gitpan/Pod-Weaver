@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Dialect;
 {
-  $Pod::Weaver::Role::Dialect::VERSION = '3.101638';
+  $Pod::Weaver::Role::Dialect::VERSION = '3.101639';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -13,6 +13,7 @@ no Moose::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -21,7 +22,7 @@ Pod::Weaver::Role::Dialect - something that translates Pod subdialects to standa
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 IMPLEMENTING
 
@@ -36,10 +37,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

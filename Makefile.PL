@@ -11,15 +11,7 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "weave together a Pod document from an outline",
   "AUTHOR" => "Ricardo SIGNES <rjbs\@cpan.org>",
-  "BUILD_REQUIRES" => {
-    "File::Find" => 0,
-    "File::Temp" => 0,
-    "PPI" => 0,
-    "Software::License::Artistic_1_0" => 0,
-    "Software::License::Perl_5" => 0,
-    "Test::Differences" => 0,
-    "Test::More" => "0.96"
-  },
+  "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -37,6 +29,7 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "List::MoreUtils" => 0,
     "Log::Dispatchouli" => "1.100710",
+    "Module::Runtime" => 0,
     "Moose" => 0,
     "Moose::Autobox" => "0.10",
     "Moose::Role" => 0,
@@ -61,12 +54,34 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "3.101638",
+  "TEST_REQUIRES" => {
+    "Capture::Tiny" => 0,
+    "PPI" => 0,
+    "Software::License::Artistic_1_0" => 0,
+    "Software::License::Perl_5" => 0,
+    "Test::Differences" => 0,
+    "Test::More" => "0.96",
+    "blib" => 0
+  },
+  "VERSION" => "3.101639",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};

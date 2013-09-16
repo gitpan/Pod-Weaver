@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Bugs;
 {
-  $Pod::Weaver::Section::Bugs::VERSION = '3.101638';
+  $Pod::Weaver::Section::Bugs::VERSION = '3.101639';
 }
 use Moose;
 use Text::Wrap ();
@@ -53,6 +53,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -61,7 +62,7 @@ Pod::Weaver::Section::Bugs - a section for bugtracker info
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 OVERVIEW
 
@@ -79,7 +80,27 @@ information for the document, like this:
 
 This plugin requires a C<distmeta> parameter containing a hash reference of
 L<CPAN::Meta::Spec> distribution metadata and at least one of one of the
-parameters C<web> or C<mailto> defined in C<< $meta->{resources}{bugtracker} >>.
+parameters C<web> or C<mailto> defined in
+C<< $meta->{resources}{bugtracker} >>.
+
+=head2 Using Pod::Weaver::Section::Bugs with Dist::Zilla
+
+When the PodWeaver plugin is used, the C<distmeta> parameter comes from the
+dist's distmeta data.  Since this section is skipped when no bugtracker data is
+in the distmeta, you'll need to make sure it's there.  A number of plugins set
+this data up automatically.  To manually configure your bugtracker data, you
+can add something like the following to C<dist.ini>:
+
+  [MetaResources]
+  bugtracker.web = http://rt.cpan.org/NoAuth/Bugs.html?Dist=Pod-Weaver-Example
+  bugtracker.mailto = bug-pod-weaver-example@rt.cpan.org
+
+  ; Perhaps add repository stuff here:
+  repository.url =
+  repository.web =
+  repository.type =
+
+  [PodWeaver]
 
 =head1 AUTHOR
 
@@ -87,10 +108,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

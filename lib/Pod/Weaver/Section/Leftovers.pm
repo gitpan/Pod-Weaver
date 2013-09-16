@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Leftovers;
 {
-  $Pod::Weaver::Section::Leftovers::VERSION = '3.101638';
+  $Pod::Weaver::Section::Leftovers::VERSION = '3.101639';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -59,6 +59,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -67,7 +68,7 @@ Pod::Weaver::Section::Leftovers - a place to put everything that nothing else us
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 OVERVIEW
 
@@ -85,10 +86,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

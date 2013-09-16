@@ -1,11 +1,12 @@
 package Pod::Weaver::Section::Version;
 {
-  $Pod::Weaver::Section::Version::VERSION = '3.101638';
+  $Pod::Weaver::Section::Version::VERSION = '3.101639';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
 # ABSTRACT: add a VERSION pod section
 
+use Module::Runtime qw(use_module);
 use namespace::autoclean;
 
 
@@ -20,7 +21,7 @@ use String::Formatter 0.100680 stringf => {
   codes => {
     v => sub { $_[0]->{version} },
     d => sub {
-      Class::MOP::load_class( 'DateTime', { -version => '0.44' } ); # CLDR fixes
+      use_module( 'DateTime', '0.44' ); # CLDR fixes
       DateTime->from_epoch(epoch => $^T, time_zone => $_[0]->{self}->time_zone)
               ->format_cldr($_[1]),
     },
@@ -109,6 +110,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -117,7 +119,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 OVERVIEW
 
@@ -186,10 +188,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

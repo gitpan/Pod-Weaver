@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::H1Nester;
 {
-  $Pod::Weaver::Plugin::H1Nester::VERSION = '3.101638';
+  $Pod::Weaver::Plugin::H1Nester::VERSION = '3.101639';
 }
 use Moose;
 with 'Pod::Weaver::Role::Transformer';
@@ -33,6 +33,7 @@ no Moose;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -41,7 +42,7 @@ Pod::Weaver::Plugin::H1Nester - structure the input pod document into head1-grou
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 OVERVIEW
 
@@ -55,10 +56,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Section;
 {
-  $Pod::Weaver::Role::Section::VERSION = '3.101638';
+  $Pod::Weaver::Role::Section::VERSION = '3.101639';
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -13,6 +13,7 @@ no Moose::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -21,7 +22,7 @@ Pod::Weaver::Role::Section - a plugin that will get a section into a woven docum
 
 =head1 VERSION
 
-version 3.101638
+version 3.101639
 
 =head1 IMPLEMENTING
 
@@ -39,10 +40,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
