@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Collect;
 {
-  $Pod::Weaver::Section::Collect::VERSION = '3.101640';
+  $Pod::Weaver::Section::Collect::VERSION = '4.000'; # TRIAL
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -110,13 +110,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 OVERVIEW
 

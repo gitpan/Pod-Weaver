@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::H1Nester;
 {
-  $Pod::Weaver::Plugin::H1Nester::VERSION = '3.101640';
+  $Pod::Weaver::Plugin::H1Nester::VERSION = '4.000'; # TRIAL
 }
 use Moose;
 with 'Pod::Weaver::Role::Transformer';
@@ -36,13 +36,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::Plugin::H1Nester - structure the input pod document into head1-grouped sections
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 OVERVIEW
 

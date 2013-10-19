@@ -14,8 +14,8 @@ use Pod::Elemental::Transformer::Nester;
 
 use Pod::Weaver;
 
-my $in_pod   = do { local $/; open my $fh, '<:encoding(UTF-8)', 't/eg/basic.in.pod'; <$fh> };
-my $expected = do { local $/; open my $fh, '<:encoding(UTF-8)', 't/eg/basic.out.pod'; <$fh> };
+my $in_pod   = do { local $/; open my $fh, '<:encoding(UTF-8)', 't/eg/encoding.in.pod'; <$fh> };
+my $expected = do { local $/; open my $fh, '<:encoding(UTF-8)', 't/eg/encoding.out.pod'; <$fh> };
 my $document = Pod::Elemental->read_string($in_pod);
 
 my $perl_document = do { local $/; <DATA> };
@@ -38,36 +38,6 @@ my $woven = $weaver->weave_document({
     year   => 1999,
   }),
 });
-
-#      Document
-# 0      =encoding UTF-8
-# 1      =head1 NAME
-#   0      Pod5::Ordinary <Module::Name - abstract text>
-# 2      =head1 VERSION
-#   0      Pod5::Ordinary <version 1.012078>
-# 3      Pod5::Ordinary <Please pay clos…the following.>
-# 4      =head1 SYNOPSIS
-#   0      Pod5::Ordinary <This should pro…oved up front.>
-# 5      =head1 DESCRIPTION
-#   0      Pod5::Ordinary <This is a simpl…g Pod::Weaver.>
-#   1      Pod5::Ordinary <It does not do very much.>
-# 6      =head1 ATTRIBUTES
-#   0      =head2 is_awesome
-#     0      Pod5::Ordinary <(This is true by default.)>
-# 7      =head1 BE FOREWARNED
-#   0      Pod5::Ordinary <This is not supported:>
-#   1      Pod5::Verbatim <  much at all>
-#   2      Pod5::Ordinary <Happy hacking!>
-# 8      Pod5::Ordinary <Thank you for your attention.>
-# 9      =head1 AUTHORS
-#   0      =over 4
-#   1      =item *
-#   2      Pod5::Ordinary <Ricardo Singes…>
-#   3      =item *
-#   4      Pod5::Ordinary <Molly Millions…>
-#   5      =back
-# 10     =head1 COPYRIGHT AND LICENSE
-#   0      Pod5::Ordinary <This software i…ic License 1.0>
 
 is($woven->children->length, 11, "we end up with a 11-paragraph document");
 

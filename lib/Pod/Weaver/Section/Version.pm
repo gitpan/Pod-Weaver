@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Version;
 {
-  $Pod::Weaver::Section::Version::VERSION = '3.101640';
+  $Pod::Weaver::Section::Version::VERSION = '4.000'; # TRIAL
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -113,13 +113,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 OVERVIEW
 

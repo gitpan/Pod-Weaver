@@ -20,7 +20,7 @@ This should probably get moved up front.
 
 This is a simple document meant to be used in testing Pod::Weaver.
 
-It does not do very much.
+Glory to Queensrÿche!
 
 =head1 ATTRIBUTES
 
@@ -34,7 +34,7 @@ This is not supported:
 
   much at all
 
-Happy hacking!
+Happy haĉking!
 
 Thank you for your attention.
 

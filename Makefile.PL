@@ -55,15 +55,13 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Capture::Tiny" => 0,
     "PPI" => 0,
     "Software::License::Artistic_1_0" => 0,
     "Software::License::Perl_5" => 0,
     "Test::Differences" => 0,
-    "Test::More" => "0.96",
-    "blib" => 0
+    "Test::More" => "0.96"
   },
-  "VERSION" => "3.101640",
+  "VERSION" => "4.000",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::Finalizer;
 {
-  $Pod::Weaver::Role::Finalizer::VERSION = '3.101640';
+  $Pod::Weaver::Role::Finalizer::VERSION = '4.000'; # TRIAL
 }
 use Moose::Role;
 with 'Pod::Weaver::Role::Plugin';
@@ -16,13 +16,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::Role::Finalizer - something that goes back and finishes up after main weaving is over
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 IMPLEMENTING
 

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::Default;
 {
-  $Pod::Weaver::PluginBundle::Default::VERSION = '3.101640';
+  $Pod::Weaver::PluginBundle::Default::VERSION = '4.000'; # TRIAL
 }
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
@@ -14,9 +14,10 @@ sub _exp { Pod::Weaver::Config::Assembler->expand_package($_[0]) }
 
 sub mvp_bundle_config {
   return (
-    [ '@Default/CorePrep',  _exp('@CorePrep'), {} ],
-    [ '@Default/Name',      _exp('Name'),      {} ],
-    [ '@Default/Version',   _exp('Version'),   {} ],
+    [ '@Default/CorePrep',        _exp('@CorePrep'), {} ],
+    [ '@Default/SingleEncoding',  _exp('-SingleEncoding'), {} ],
+    [ '@Default/Name',            _exp('Name'),      {} ],
+    [ '@Default/Version',         _exp('Version'),   {} ],
 
     [ '@Default/prelude',   _exp('Region'),    { region_name => 'prelude'  } ],
     [ 'SYNOPSIS',           _exp('Generic'),   {} ],
@@ -42,13 +43,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::PluginBundle::Default - a bundle for the most commonly-needed prep work for a pod document
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 OVERVIEW
 

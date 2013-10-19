@@ -1,10 +1,12 @@
 package Pod::Weaver::Section::Leftovers;
 {
-  $Pod::Weaver::Section::Leftovers::VERSION = '3.101640';
+  $Pod::Weaver::Section::Leftovers::VERSION = '4.000'; # TRIAL
 }
 use Moose;
-with 'Pod::Weaver::Role::Section';
-with 'Pod::Weaver::Role::Finalizer';
+with(
+  'Pod::Weaver::Role::Section',
+  'Pod::Weaver::Role::Finalizer',
+);
 # ABSTRACT: a place to put everything that nothing else used
 
 use Moose::Autobox;
@@ -62,13 +64,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::Section::Leftovers - a place to put everything that nothing else used
 
 =head1 VERSION
 
-version 3.101640
+version 4.000
 
 =head1 OVERVIEW
 

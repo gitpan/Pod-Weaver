@@ -12,6 +12,7 @@ lib/Pod/Weaver/Config/Assembler.pm
 lib/Pod/Weaver/Config/Finder.pm
 lib/Pod/Weaver/Plugin/EnsurePod5.pm
 lib/Pod/Weaver/Plugin/H1Nester.pm
+lib/Pod/Weaver/Plugin/SingleEncoding.pm
 lib/Pod/Weaver/Plugin/Transformer.pm
 lib/Pod/Weaver/PluginBundle/CorePrep.pm
 lib/Pod/Weaver/PluginBundle/Default.pm
@@ -30,11 +31,12 @@ lib/Pod/Weaver/Section/Legal.pm
 lib/Pod/Weaver/Section/Name.pm
 lib/Pod/Weaver/Section/Region.pm
 lib/Pod/Weaver/Section/Version.pm
-t/00-compile.t
 t/000-report-versions-tiny.t
 t/basic.t
 t/eg/basic.in.pod
 t/eg/basic.out.pod
+t/eg/encoding.in.pod
+t/eg/encoding.out.pod
 t/eg/legal_t1.in.pod
 t/eg/legal_t1.out.pod
 t/eg/legal_t2.in.pod
@@ -60,6 +62,7 @@ t/eg/version_t5.out.pod
 t/eg/version_without_package.in.pod
 t/eg/version_without_package.out.pod
 t/eg/weaver.ini
+t/encoding.t
 t/ini-config.t
 t/legal_section.t
 t/region_options.t
