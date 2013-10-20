@@ -36,6 +36,7 @@
             "File::Spec" : "0",
             "List::MoreUtils" : "0",
             "Log::Dispatchouli" : "1.100710",
+            "Mixin::Linewise::Readers" : "0.100",
             "Module::Runtime" : "0",
             "Moose" : "0",
             "Moose::Autobox" : "0.10",
@@ -84,7 +85,7 @@
          "web" : "https://github.com/rjbs/Pod-Weaver"
       }
    },
-   "version" : "4.000",
+   "version" : "4.001",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019004"
@@ -254,7 +255,7 @@
                }
             },
             "name" : "@RJBS/PodWeaver",
-            "version" : "3.102000"
+            "version" : "4.000"
          },
          {
             "class" : "Dist::Zilla::Plugin::GithubMeta",

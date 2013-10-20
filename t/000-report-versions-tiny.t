@@ -58,6 +58,7 @@ eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('List::MoreUtils','any version') };
 eval { $v .= pmver('Log::Dispatchouli','1.100710') };
+eval { $v .= pmver('Mixin::Linewise::Readers','0.100') };
 eval { $v .= pmver('Module::Runtime','any version') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Moose::Autobox','0.10') };
