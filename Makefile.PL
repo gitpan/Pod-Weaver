@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "List::MoreUtils" => 0,
     "Log::Dispatchouli" => "1.100710",
-    "Mixin::Linewise::Readers" => "0.100",
+    "Mixin::Linewise::Readers" => "0.102",
     "Module::Runtime" => 0,
     "Moose" => 0,
     "Moose::Autobox" => "0.10",
@@ -62,37 +62,60 @@ my %WriteMakefileArgs = (
     "Test::Differences" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "4.001",
+  "VERSION" => "4.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
 
-unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
-  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
-  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
-  for my $mod ( keys %$tr ) {
-    if ( exists $br->{$mod} ) {
-      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
-    }
-    else {
-      $br->{$mod} = $tr->{$mod};
-    }
-  }
-}
+my %FallbackPrereqs = (
+  "Config::MVP" => 2,
+  "Config::MVP::Assembler" => 0,
+  "Config::MVP::Assembler::WithBundles" => 0,
+  "Config::MVP::Reader::Finder" => 0,
+  "Config::MVP::Reader::INI" => 0,
+  "DateTime" => 0,
+  "File::Spec" => 0,
+  "List::MoreUtils" => 0,
+  "Log::Dispatchouli" => "1.100710",
+  "Mixin::Linewise::Readers" => "0.102",
+  "Module::Runtime" => 0,
+  "Moose" => 0,
+  "Moose::Autobox" => "0.10",
+  "Moose::Role" => 0,
+  "PPI" => 0,
+  "Params::Util" => 0,
+  "Pod::Elemental" => "0.100220",
+  "Pod::Elemental::Document" => 0,
+  "Pod::Elemental::Element::Nested" => 0,
+  "Pod::Elemental::Element::Pod5::Command" => 0,
+  "Pod::Elemental::Element::Pod5::Ordinary" => 0,
+  "Pod::Elemental::Element::Pod5::Region" => 0,
+  "Pod::Elemental::Element::Pod5::Verbatim" => 0,
+  "Pod::Elemental::Selectors" => 0,
+  "Pod::Elemental::Transformer::Gatherer" => 0,
+  "Pod::Elemental::Transformer::Nester" => 0,
+  "Pod::Elemental::Transformer::Pod5" => 0,
+  "Pod::Elemental::Types" => 0,
+  "Software::License::Artistic_1_0" => 0,
+  "Software::License::Perl_5" => 0,
+  "String::Flogger" => 1,
+  "String::Formatter" => "0.100680",
+  "String::RewritePrefix" => 0,
+  "Test::Differences" => 0,
+  "Test::More" => "0.96",
+  "Text::Wrap" => 0,
+  "namespace::autoclean" => 0,
+  "strict" => 0,
+  "warnings" => 0
+);
 
-unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
-  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
-  my $pp = $WriteMakefileArgs{PREREQ_PM};
-  for my $mod ( keys %$br ) {
-    if ( exists $pp->{$mod} ) {
-      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
-    }
-    else {
-      $pp->{$mod} = $br->{$mod};
-    }
-  }
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  delete $WriteMakefileArgs{TEST_REQUIRES};
+  delete $WriteMakefileArgs{BUILD_REQUIRES};
+  $WriteMakefileArgs{PREREQ_PM} = \%FallbackPrereqs;
 }
 
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}

@@ -1,6 +1,6 @@
 package Pod::Weaver::Config::Finder;
 {
-  $Pod::Weaver::Config::Finder::VERSION = '4.001'; # TRIAL
+  $Pod::Weaver::Config::Finder::VERSION = '4.002';
 }
 use Moose;
 extends 'Config::MVP::Reader::Finder';
@@ -19,15 +19,13 @@ __END__
 
 =pod
 
-=encoding UTF-8
-
 =head1 NAME
 
 Pod::Weaver::Config::Finder - the reader for weaver.ini files
 
 =head1 VERSION
 
-version 4.001
+version 4.002
 
 =head1 AUTHOR
 

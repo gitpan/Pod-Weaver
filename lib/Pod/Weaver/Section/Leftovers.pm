@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Leftovers;
 {
-  $Pod::Weaver::Section::Leftovers::VERSION = '4.001'; # TRIAL
+  $Pod::Weaver::Section::Leftovers::VERSION = '4.002';
 }
 use Moose;
 with(
@@ -64,15 +64,13 @@ __END__
 
 =pod
 
-=encoding UTF-8
-
 =head1 NAME
 
 Pod::Weaver::Section::Leftovers - a place to put everything that nothing else used
 
 =head1 VERSION
 
-version 4.001
+version 4.002
 
 =head1 OVERVIEW
 

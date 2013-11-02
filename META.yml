@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.000, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Dist::Zilla version 5.004, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,7 +27,7 @@ requires:
   File::Spec: 0
   List::MoreUtils: 0
   Log::Dispatchouli: 1.100710
-  Mixin::Linewise::Readers: 0.100
+  Mixin::Linewise::Readers: 0.102
   Module::Runtime: 0
   Moose: 0
   Moose::Autobox: 0.10
@@ -56,10 +56,10 @@ resources:
   bugtracker: https://github.com/rjbs/Pod-Weaver/issues
   homepage: https://github.com/rjbs/Pod-Weaver
   repository: https://github.com/rjbs/Pod-Weaver.git
-version: 4.001
+version: 4.002
 x_Dist_Zilla:
   perl:
-    version: 5.019004
+    version: 5.019005
   plugins:
     -
       class: Dist::Zilla::Plugin::Prereqs
@@ -68,11 +68,11 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::Git::GatherDir
       name: '@RJBS/Git::GatherDir'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::CheckPrereqsIndexed
       name: '@RJBS/CheckPrereqsIndexed'
@@ -80,7 +80,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::CheckExtraTests
       name: '@RJBS/CheckExtraTests'
-      version: 0.013
+      version: 0.015
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       name: '@RJBS/RJBS-Outdated'
@@ -92,75 +92,75 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@RJBS/@Filter/PruneCruft'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@RJBS/@Filter/ManifestSkip'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@RJBS/@Filter/MetaYAML'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::License
       name: '@RJBS/@Filter/License'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@RJBS/@Filter/Readme'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@RJBS/@Filter/ExecDir'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@RJBS/@Filter/ShareDir'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@RJBS/@Filter/MakeMaker'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@RJBS/@Filter/Manifest'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@RJBS/@Filter/TestRelease'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@RJBS/@Filter/ConfirmRelease'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@RJBS/@Filter/UploadToCPAN'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@RJBS/AutoPrereqs'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RJBS/Git::NextVersion'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@RJBS/PkgVersion'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@RJBS/MetaConfig'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@RJBS/MetaJSON'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@RJBS/NextRelease'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::Test::ChangesHasContent
       name: '@RJBS/Test::ChangesHasContent'
@@ -168,7 +168,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@RJBS/PodSyntaxTests'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::ReportVersions::Tiny
       name: '@RJBS/ReportVersions::Tiny'
@@ -180,7 +180,7 @@ x_Dist_Zilla:
           phase: test
           type: requires
       name: '@RJBS/TestMoreWithSubtests'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::PodWeaver
       config:
@@ -190,7 +190,7 @@ x_Dist_Zilla:
             - ':InstallModules'
             - ':ExecFiles'
       name: '@RJBS/PodWeaver'
-      version: 4.000
+      version: 3.102000
     -
       class: Dist::Zilla::Plugin::GithubMeta
       name: '@RJBS/GithubMeta'
@@ -198,45 +198,45 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@RJBS/@Git/Check'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@RJBS/@Git/Commit'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@RJBS/@Git/Tag'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@RJBS/@Git/Push'
-      version: 2.016
+      version: 2.017
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 5.000
+      version: 5.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 5.000
+      version: 5.004
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
-    version: 5.000
+      is_trial: 0
+    version: 5.004
