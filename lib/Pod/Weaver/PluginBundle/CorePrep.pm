@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::CorePrep;
 {
-  $Pod::Weaver::PluginBundle::CorePrep::VERSION = '4.002';
+  $Pod::Weaver::PluginBundle::CorePrep::VERSION = '4.003';
 }
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
@@ -28,7 +28,7 @@ Pod::Weaver::PluginBundle::CorePrep - a bundle for the most commonly-needed prep
 
 =head1 VERSION
 
-version 4.002
+version 4.003
 
 =head1 AUTHOR
 

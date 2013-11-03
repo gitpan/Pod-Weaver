@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Authors;
 {
-  $Pod::Weaver::Section::Authors::VERSION = '4.002';
+  $Pod::Weaver::Section::Authors::VERSION = '4.003';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -64,7 +64,7 @@ Pod::Weaver::Section::Authors - a section listing authors
 
 =head1 VERSION
 
-version 4.002
+version 4.003
 
 =head1 OVERVIEW
 
