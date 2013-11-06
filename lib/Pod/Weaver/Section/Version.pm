@@ -1,9 +1,10 @@
 package Pod::Weaver::Section::Version;
 {
-  $Pod::Weaver::Section::Version::VERSION = '4.003';
+  $Pod::Weaver::Section::Version::VERSION = '4.004';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
+with 'Pod::Weaver::Role::StringFromComment';
 # ABSTRACT: add a VERSION pod section
 
 use Module::Runtime qw(use_module);
@@ -12,6 +13,10 @@ use namespace::autoclean;
 
 use DateTime;
 use Moose::Autobox;
+use Moose::Util::TypeConstraints;
+
+my $MARKER;
+BEGIN { $MARKER = "\x{2316}" }
 
 use String::Formatter 0.100680 stringf => {
   -as => '_format_version',
@@ -20,6 +25,10 @@ use String::Formatter 0.100680 stringf => {
   string_replacer => 'method_replace',
   codes => {
     v => sub { $_[0]->{version} },
+    V => sub { $_[0]->{version}
+                . ($_[0]->{is_trial}
+                   ? (defined $_[1] ? $_[1] : '-TRIAL') : '') },
+
     d => sub {
       use_module( 'DateTime', '0.44' ); # CLDR fixes
       DateTime->from_epoch(epoch => $^T, time_zone => $_[0]->{self}->time_zone)
@@ -33,15 +42,29 @@ use String::Formatter 0.100680 stringf => {
         $_[0]->{filename},
       ]);
     },
-    t => sub { "\t" },
+
+    T => sub { $MARKER },
     n => sub { "\n" },
+    s => sub { q{ } },
+    t => sub { "\t" },
   },
 };
 
+# Needed by Config::MVP.
+sub mvp_multivalue_args { 'format' }
+
+
+subtype 'Pod::Weaver::Section::Version::_Format',
+  as 'ArrayRef[Str]';
+
+coerce 'Pod::Weaver::Section::Version::_Format',
+  from 'Str',
+  via { [ $_ ] };
 
 has format => (
   is  => 'ro',
-  isa => 'Str',
+  isa => 'Pod::Weaver::Section::Version::_Format',
+  coerce => 1,
   default => 'version %v',
 );
 
@@ -71,12 +94,29 @@ sub build_content {
   );
   $args{zilla} = $input->{zilla} if exists $input->{zilla};
 
+  $args{is_trial} = exists $input->{is_trial} ? $input->{is_trial}
+                  : $args{zilla}              ? $args{zilla}->is_trial
+                  :                             undef;
+
   if ( exists $input->{ppi_document} ) {
     my $pkg_node = $input->{ppi_document}->find_first('PPI::Statement::Package');
-    $args{module} = $pkg_node->namespace if $pkg_node;
+    $args{module}
+        = $pkg_node
+        ? $pkg_node->namespace
+        : $self->_extract_comment_content($input->{ppi_document}, 'PODNAME')
+        ;
   }
 
-  my $content = _format_version($self->format, \%args);
+  my $content = q{};
+  LINE: for my $format (@{ $self->format }) {
+    my $line = _format_version($format, \%args);
+    next if $line =~ s/^$MARKER\s*// and ! $args{is_trial};
+
+    Carp::croak("%T format used inside line") if $line =~ /$MARKER/;
+
+    $content .= "$line\n";
+  }
+
   if ( $self->is_verbatim ) {
     $content = Pod::Elemental::Element::Pod5::Verbatim->new({
       content => "  $content",
@@ -119,7 +159,7 @@ Pod::Weaver::Section::Version - add a VERSION pod section
 
 =head1 VERSION
 
-version 4.003
+version 4.004
 
 =head1 OVERVIEW
 
@@ -144,19 +184,57 @@ The following variables are available:
 
 =over 4
 
-=item * v - the version
+=item *
 
-=item * d - the CLDR format for L<DateTime>
+v - the version
 
-=item * n - a newline
+=item *
 
-=item * t - a tab
+V - the version, suffixed by "-TRIAL" if a trial release
 
-=item * r - the name of the dist, present only if you use L<Dist::Zilla> to generate the POD!
+=item *
 
-=item * m - the name of the module, present only if L<PPI> parsed the document and it contained a package declaration!
+d - the CLDR format for L<DateTime>
+
+=item *
+
+n - a newline
+
+=item *
+
+t - a tab
+
+=item *
+
+s - a space
+
+=item *
+
+r - the name of the dist, present only if you use L<Dist::Zilla> to generate the POD!
+
+=item *
+
+m - the name of the module, present only if L<PPI> parsed the document and it contained a package declaration!
+
+=item *
+
+T - special: at the beginning of the line, followed by any amount of whitespace, indicates that the line should only be included in trial releases; otherwise, results in a fatal error
 
 =back
+
+If multiple strings are supplied as an array ref, a line of POD is
+produced for each string.  Each line will be separated by a newline.
+This is useful for splitting longer text across multiple lines in a
+C<weaver.ini> file, for example:
+
+  ; weaver.ini
+  [Version]
+  format = version %v
+  format =
+  format = This module's version numbers follow the conventions described at
+  format = L<semver.org|http://semver.org/>.
+  format = %T
+  format = %T This is a trial release!
 
 =head2 is_verbatim
 

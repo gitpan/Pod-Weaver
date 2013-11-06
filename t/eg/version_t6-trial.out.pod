@@ -6,7 +6,12 @@ Module::Name - abstract text
 
 =head1 VERSION
 
-version 1.012078
+1.012078
+FOOBAZ
+
+EXPLANATION
+
+This is a trial release.
 
 =head1 DESCRIPTION
 

@@ -6,7 +6,10 @@ Module::Name - abstract text
 
 =head1 VERSION
 
-version 1.012078
+1.012078
+FOOBAZ
+
+EXPLANATION
 
 =head1 DESCRIPTION
 

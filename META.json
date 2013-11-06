@@ -41,6 +41,7 @@
             "Moose" : "0",
             "Moose::Autobox" : "0.10",
             "Moose::Role" : "0",
+            "Moose::Util::TypeConstraints" : "0",
             "Params::Util" : "0",
             "Pod::Elemental" : "0.100220",
             "Pod::Elemental::Document" : "0",
@@ -85,7 +86,7 @@
          "web" : "https://github.com/rjbs/Pod-Weaver"
       }
    },
-   "version" : "4.003",
+   "version" : "4.004",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019005"

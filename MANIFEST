@@ -21,6 +21,7 @@ lib/Pod/Weaver/Role/Finalizer.pm
 lib/Pod/Weaver/Role/Plugin.pm
 lib/Pod/Weaver/Role/Preparer.pm
 lib/Pod/Weaver/Role/Section.pm
+lib/Pod/Weaver/Role/StringFromComment.pm
 lib/Pod/Weaver/Role/Transformer.pm
 lib/Pod/Weaver/Section/Authors.pm
 lib/Pod/Weaver/Section/Bugs.pm
@@ -59,6 +60,9 @@ t/eg/version_t4.in.pod
 t/eg/version_t4.out.pod
 t/eg/version_t5.in.pod
 t/eg/version_t5.out.pod
+t/eg/version_t6-trial.out.pod
+t/eg/version_t6.in.pod
+t/eg/version_t6.out.pod
 t/eg/version_without_package.in.pod
 t/eg/version_without_package.out.pod
 t/eg/weaver.ini

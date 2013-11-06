@@ -34,6 +34,7 @@ my %WriteMakefileArgs = (
     "Moose" => 0,
     "Moose::Autobox" => "0.10",
     "Moose::Role" => 0,
+    "Moose::Util::TypeConstraints" => 0,
     "Params::Util" => 0,
     "Pod::Elemental" => "0.100220",
     "Pod::Elemental::Document" => 0,
@@ -62,7 +63,7 @@ my %WriteMakefileArgs = (
     "Test::Differences" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "4.003",
+  "VERSION" => "4.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -84,6 +85,7 @@ my %FallbackPrereqs = (
   "Moose" => 0,
   "Moose::Autobox" => "0.10",
   "Moose::Role" => 0,
+  "Moose::Util::TypeConstraints" => 0,
   "PPI" => 0,
   "Params::Util" => 0,
   "Pod::Elemental" => "0.100220",

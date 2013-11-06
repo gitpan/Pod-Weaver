@@ -1,6 +1,6 @@
 package Pod::Weaver::Section::Legal;
 {
-  $Pod::Weaver::Section::Legal::VERSION = '4.003';
+  $Pod::Weaver::Section::Legal::VERSION = '4.004';
 }
 use Moose;
 with 'Pod::Weaver::Role::Section';
@@ -25,8 +25,8 @@ sub weave_section {
   chomp $notice;
 
   if ( $self->_has_license_file ) {
-    $notice .= "\n\nThe full text of the license can be found in the\n'";
-    $notice .= $self->license_file . "' file included with this distribution.";
+    $notice .= "\n\nThe full text of the license can be found in the\nF<";
+    $notice .= $self->license_file . "> file included with this distribution.";
   }
 
   $document->children->push(
@@ -53,7 +53,7 @@ Pod::Weaver::Section::Legal - a section for the copyright and license
 
 =head1 VERSION
 
-version 4.003
+version 4.004
 
 =head1 OVERVIEW
 

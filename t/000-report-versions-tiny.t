@@ -63,6 +63,7 @@ eval { $v .= pmver('Module::Runtime','any version') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Moose::Autobox','0.10') };
 eval { $v .= pmver('Moose::Role','any version') };
+eval { $v .= pmver('Moose::Util::TypeConstraints','any version') };
 eval { $v .= pmver('PPI','any version') };
 eval { $v .= pmver('Params::Util','any version') };
 eval { $v .= pmver('Pod::Elemental','0.100220') };

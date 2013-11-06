@@ -1,6 +1,6 @@
 package Pod::Weaver::Plugin::SingleEncoding;
 {
-  $Pod::Weaver::Plugin::SingleEncoding::VERSION = '4.003';
+  $Pod::Weaver::Plugin::SingleEncoding::VERSION = '4.004';
 }
 use Moose;
 with(
@@ -86,7 +86,7 @@ Pod::Weaver::Plugin::SingleEncoding - ensure that there is exactly one =encoding
 
 =head1 VERSION
 
-version 4.003
+version 4.004
 
 =head1 OVERVIEW
 
