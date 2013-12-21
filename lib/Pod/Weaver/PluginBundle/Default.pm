@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Pod::Weaver::PluginBundle::Default;
 {
-  $Pod::Weaver::PluginBundle::Default::VERSION = '4.004';
+  $Pod::Weaver::PluginBundle::Default::VERSION = '4.005';
 }
 # ABSTRACT: a bundle for the most commonly-needed prep work for a pod document
 
@@ -43,13 +43,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver::PluginBundle::Default - a bundle for the most commonly-needed prep work for a pod document
 
 =head1 VERSION
 
-version 4.004
+version 4.005
 
 =head1 OVERVIEW
 

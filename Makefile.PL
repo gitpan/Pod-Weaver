@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "List::MoreUtils" => 0,
     "Log::Dispatchouli" => "1.100710",
-    "Mixin::Linewise::Readers" => "0.102",
+    "Mixin::Linewise::Readers" => "0.103",
     "Module::Runtime" => 0,
     "Moose" => 0,
     "Moose::Autobox" => "0.10",
@@ -63,7 +63,7 @@ my %WriteMakefileArgs = (
     "Test::Differences" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "4.004",
+  "VERSION" => "4.005",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -80,7 +80,7 @@ my %FallbackPrereqs = (
   "File::Spec" => 0,
   "List::MoreUtils" => 0,
   "Log::Dispatchouli" => "1.100710",
-  "Mixin::Linewise::Readers" => "0.102",
+  "Mixin::Linewise::Readers" => "0.103",
   "Module::Runtime" => 0,
   "Moose" => 0,
   "Moose::Autobox" => "0.10",

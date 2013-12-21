@@ -1,6 +1,6 @@
 package Pod::Weaver;
 {
-  $Pod::Weaver::VERSION = '4.004';
+  $Pod::Weaver::VERSION = '4.005';
 }
 use Moose;
 # ABSTRACT: weave together a Pod document from an outline
@@ -158,13 +158,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Pod::Weaver - weave together a Pod document from an outline
 
 =head1 VERSION
 
-version 4.004
+version 4.005
 
 =head1 SYNOPSIS
 
