@@ -1,6 +1,6 @@
 package Pod::Weaver::Config::Finder;
 {
-  $Pod::Weaver::Config::Finder::VERSION = '4.005';
+  $Pod::Weaver::Config::Finder::VERSION = '4.006';
 }
 use Moose;
 extends 'Config::MVP::Reader::Finder';
@@ -27,7 +27,7 @@ Pod::Weaver::Config::Finder - the reader for weaver.ini files
 
 =head1 VERSION
 
-version 4.005
+version 4.006
 
 =head1 AUTHOR
 
@@ -35,7 +35,7 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo SIGNES.
+This software is copyright (c) 2014 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
