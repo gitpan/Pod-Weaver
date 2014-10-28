@@ -1,18 +1,48 @@
 package Pod::Weaver::Section::Region;
-{
-  $Pod::Weaver::Section::Region::VERSION = '4.006';
-}
+# ABSTRACT: find a region and put its contents in place where desired
+$Pod::Weaver::Section::Region::VERSION = '4.007';
 use Moose;
 with 'Pod::Weaver::Role::Section';
-# ABSTRACT: find a region and put its contents in place where desired
 
 use Moose::Autobox;
 
+#pod =head1 OVERVIEW
+#pod
+#pod This section will find and include a located hunk of Pod.  In general, it will
+#pod find a region with the specified name.
+#pod
+#pod In other words, if your configuration include:
+#pod
+#pod   [Region]
+#pod   region_name = myfoo
+#pod
+#pod ...then this weaver will look for "=begin myfoo" ( and "=for myfoo" and... ) and include
+#pod it at the appropriate location in your output.
+#pod
+#pod Since you'll probably want to use Region several times, and that will require
+#pod giving each use a unique name, you can omit C<region_name> if you provide a
+#pod plugin name, and it will default to the plugin name.  In other words, the
+#pod configuration above could be specified just as:
+#pod
+#pod   [Region / myfoo]
+#pod
+#pod If the C<required> attribute is given, and true, then an exception will be
+#pod raised if this region can't be found.
+#pod
+#pod =cut
 
 use Pod::Elemental::Element::Pod5::Region;
 use Pod::Elemental::Selectors -all;
 use Pod::Elemental::Types qw(FormatName);
 
+#pod =attr required
+#pod
+#pod A boolean value specifying whether this region is required to be present or not. Defaults
+#pod to false.
+#pod
+#pod If it's enabled and the region can't be found an exception will be raised.
+#pod
+#pod =cut
 
 has required => (
   is  => 'ro',
@@ -20,6 +50,11 @@ has required => (
   default => 0,
 );
 
+#pod =attr region_name
+#pod
+#pod The name of this region. Defaults to the plugin name.
+#pod
+#pod =cut
 
 has region_name => (
   is   => 'ro',
@@ -29,6 +64,11 @@ has region_name => (
   default  => sub { $_[0]->plugin_name },
 );
 
+#pod =attr allow_nonpod
+#pod
+#pod A boolean value specifying whether nonpod regions are allowed or not. Defaults to false.
+#pod
+#pod =cut
 
 has allow_nonpod => (
   is  => 'ro',
@@ -36,6 +76,11 @@ has allow_nonpod => (
   default => 0,
 );
 
+#pod =attr flatten
+#pod
+#pod A boolean value specifying whether the region's contents should be flattened or not. Defaults to true.
+#pod
+#pod =cut
 
 has flatten => (
   is  => 'ro',
@@ -73,7 +118,6 @@ sub weave_section {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 1;
 
 __END__
@@ -88,7 +132,7 @@ Pod::Weaver::Section::Region - find a region and put its contents in place where
 
 =head1 VERSION
 
-version 4.006
+version 4.007
 
 =head1 OVERVIEW
 

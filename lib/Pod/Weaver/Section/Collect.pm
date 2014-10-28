@@ -1,18 +1,51 @@
 package Pod::Weaver::Section::Collect;
-{
-  $Pod::Weaver::Section::Collect::VERSION = '4.006';
-}
+# ABSTRACT: a section that gathers up specific commands
+$Pod::Weaver::Section::Collect::VERSION = '4.007';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 with 'Pod::Weaver::Role::Transformer';
-# ABSTRACT: a section that gathers up specific commands
 
 use Moose::Autobox;
 
+#pod =head1 OVERVIEW
+#pod
+#pod Given the configuration:
+#pod
+#pod   [Collect / METHODS]
+#pod   command = method
+#pod
+#pod This plugin will start off by gathering and nesting any C<=method> commands
+#pod found in the C<pod_document>.  Those commands, along with their nestable
+#pod content, will be collected under a C<=head1 METHODS> header and placed in the
+#pod correct location in the output stream.  Their order will be preserved as it was
+#pod in the source document.
+#pod
+#pod =cut
 
 use Pod::Elemental::Element::Pod5::Region;
 use Pod::Elemental::Selectors -all;
 
+#pod =attr command
+#pod
+#pod The command that will be collected (e.g. C<attr> or C<method>).
+#pod (required)
+#pod
+#pod =attr new_command
+#pod
+#pod The command to be used in the output instead of the collected command.
+#pod (default: C<head2>)
+#pod
+#pod =attr header_command
+#pod
+#pod The section command for the section to be added.
+#pod (default: C<head1>)
+#pod
+#pod =attr header
+#pod
+#pod The title of the section to be added.
+#pod (default: the plugin name)
+#pod
+#pod =cut
 
 has command => (
   is  => 'ro',
@@ -103,7 +136,6 @@ sub weave_section {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 1;
 
 __END__
@@ -118,7 +150,7 @@ Pod::Weaver::Section::Collect - a section that gathers up specific commands
 
 =head1 VERSION
 
-version 4.006
+version 4.007
 
 =head1 OVERVIEW
 
