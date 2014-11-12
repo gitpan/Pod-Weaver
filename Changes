@@ -1,5 +1,10 @@
 Revision history for Pod-Weaver
 
+4.008     2014-11-12 09:37:13-05:00 America/New_York
+        - handle UTF-8 data in PODNAME and ABSTRACT (thanks,  Blabos de Blebe)
+        - Explain Section::Region naming, nonpod, and flattening
+          (thanks, Kent Fredric)
+
 4.007     2014-10-27 22:21:55-04:00 America/New_York
         - immutabilize ALL THE THINGS!
 

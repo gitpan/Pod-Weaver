@@ -17,6 +17,7 @@ do { my $x = {
                                       'Config::MVP::Reader::Finder' => '0',
                                       'Config::MVP::Reader::INI' => '0',
                                       'DateTime' => '0',
+                                      'Encode' => '0',
                                       'File::Spec' => '0',
                                       'List::MoreUtils' => '0',
                                       'Log::Dispatchouli' => '1.100710',

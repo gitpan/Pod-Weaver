@@ -1,6 +1,6 @@
 package Pod::Weaver::Role::StringFromComment;
 # ABSTRACT: Extract a string from a specially formatted comment
-$Pod::Weaver::Role::StringFromComment::VERSION = '4.007';
+$Pod::Weaver::Role::StringFromComment::VERSION = '4.008';
 use Moose::Role;
 use namespace::autoclean;
 
@@ -80,7 +80,7 @@ Pod::Weaver::Role::StringFromComment - Extract a string from a specially formatt
 
 =head1 VERSION
 
-version 4.007
+version 4.008
 
 =head1 OVERVIEW
 

@@ -1,11 +1,12 @@
 package Pod::Weaver::Section::Name;
 # ABSTRACT: add a NAME section with abstract (for your Perl module)
-$Pod::Weaver::Section::Name::VERSION = '4.007';
+$Pod::Weaver::Section::Name::VERSION = '4.008';
 use Moose;
 with 'Pod::Weaver::Role::Section';
 with 'Pod::Weaver::Role::StringFromComment';
 
 use Moose::Autobox;
+use Encode;
 
 #pod =head1 OVERVIEW
 #pod
@@ -76,8 +77,10 @@ sub weave_section {
 
   my $filename = $input->{filename} || 'file';
 
-  my $docname  = $self->_get_docname($input);
-  my $abstract = $self->_get_abstract($input);
+  # We can do this becaue we know that PPI is working on bytes.  If PPI ever
+  # becomes a string parser, we'll need to rethink. -- rjbs, 2014-11-12
+  my $docname  = Encode::decode_utf8($self->_get_docname($input));
+  my $abstract = Encode::decode_utf8($self->_get_abstract($input));
 
   Carp::croak sprintf "couldn't determine document name for %s\nAdd something like this to %s:\n# PODNAME: bobby_tables.pl", $filename, $filename
     unless $docname;
@@ -113,7 +116,7 @@ Pod::Weaver::Section::Name - add a NAME section with abstract (for your Perl mod
 
 =head1 VERSION
 
-version 4.007
+version 4.008
 
 =head1 OVERVIEW
 
