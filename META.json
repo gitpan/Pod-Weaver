@@ -4,7 +4,7 @@
       "Ricardo SIGNES <rjbs@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.025, CPAN::Meta::Converter version 2.142690",
+   "generated_by" : "Dist::Zilla version 5.025, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "perl_5"
    ],
@@ -91,7 +91,7 @@
          "web" : "https://github.com/rjbs/Pod-Weaver"
       }
    },
-   "version" : "4.008",
+   "version" : "4.009",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.021005"
@@ -128,17 +128,17 @@
                }
             },
             "name" : "@RJBS/Git::GatherDir",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckPrereqsIndexed",
             "name" : "@RJBS/CheckPrereqsIndexed",
-            "version" : "0.012"
+            "version" : "0.013"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckExtraTests",
             "name" : "@RJBS/CheckExtraTests",
-            "version" : "0.024"
+            "version" : "0.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::PromptIfStale",
@@ -154,7 +154,7 @@
                }
             },
             "name" : "@RJBS/RJBS-Outdated",
-            "version" : "0.029"
+            "version" : "0.032"
          },
          {
             "class" : "Dist::Zilla::Plugin::PromptIfStale",
@@ -168,7 +168,7 @@
                }
             },
             "name" : "@RJBS/CPAN-Outdated",
-            "version" : "0.029"
+            "version" : "0.032"
          },
          {
             "class" : "Dist::Zilla::Plugin::PruneCruft",
@@ -253,7 +253,7 @@
                }
             },
             "name" : "@RJBS/Git::NextVersion",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::PkgVersion",
@@ -316,92 +316,92 @@
                      {
                         "class" : "Pod::Weaver::Plugin::EnsurePod5",
                         "name" : "@CorePrep/EnsurePod5",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Plugin::H1Nester",
                         "name" : "@CorePrep/H1Nester",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Plugin::SingleEncoding",
                         "name" : "@RJBS/SingleEncoding",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Name",
                         "name" : "@RJBS/Name",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Version",
                         "name" : "@RJBS/Version",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Region",
                         "name" : "@RJBS/Prelude",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Generic",
                         "name" : "@RJBS/Synopsis",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Generic",
                         "name" : "@RJBS/Description",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Generic",
                         "name" : "@RJBS/Overview",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Generic",
                         "name" : "@RJBS/Stability",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Collect",
                         "name" : "Attributes",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Collect",
                         "name" : "Methods",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Collect",
                         "name" : "Functions",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Leftovers",
                         "name" : "@RJBS/Leftovers",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Region",
                         "name" : "@RJBS/postlude",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Authors",
                         "name" : "@RJBS/Authors",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Section::Legal",
                         "name" : "@RJBS/Legal",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      },
                      {
                         "class" : "Pod::Weaver::Plugin::Transformer",
                         "name" : "@RJBS/List",
-                        "version" : "4.007"
+                        "version" : "4.009"
                      }
                   ]
                }
@@ -433,7 +433,7 @@
                }
             },
             "name" : "@RJBS/@Git/Check",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
@@ -456,7 +456,7 @@
                }
             },
             "name" : "@RJBS/@Git/Commit",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
@@ -464,7 +464,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "4.008",
+                  "tag" : "4.009",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -474,7 +474,7 @@
                }
             },
             "name" : "@RJBS/@Git/Tag",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
@@ -491,7 +491,7 @@
                }
             },
             "name" : "@RJBS/@Git/Push",
-            "version" : "2.025"
+            "version" : "2.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
